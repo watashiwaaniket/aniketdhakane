@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Grid from "@/components/Grid";
 import Footer from "@/components/Footer";
 import Approach from "@/components/Approach";
-import Experience from "@/components/Experience";
 import RecentProjects from "@/components/RecentProjects";
 
 const Home = () => {
