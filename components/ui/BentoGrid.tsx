@@ -10,6 +10,7 @@ import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
+import { FaLink } from "react-icons/fa6";
 
 export const BentoGrid = ({
   className,
@@ -192,6 +193,14 @@ export const BentoGridItem = ({
                 otherClasses="!bg-[#161A31]"
               />
             </div>
+          )}
+          {id === 1 && (
+            <a
+              href="https://dev.to/hisukurifu/running-local-llm-ollama-from-api-in-node-2kk3"
+              className="text-3xl font-bold text-rose-600 flex"
+            >
+              <FaLink />
+            </a>
           )}
         </div>
       </div>

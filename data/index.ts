@@ -1,12 +1,12 @@
 export const gridItems = [
   {
     id: 1,
-    title: "I Consider Communication as the Best Asset for Collaboration",
+    title: "Read My Article on dev.to",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "/devto.jpeg",
     spareImg: "",
   },
   {
