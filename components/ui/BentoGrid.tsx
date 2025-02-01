@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoCopyOutline } from "react-icons/io5";
+import { IoLink } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie
 import Lottie from "react-lottie";
@@ -66,10 +66,11 @@ export const BentoGridItem = ({
     },
   };
 
-  const handleCopy = () => {
-    const text = "aniketdhakane3@gmail.com";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
+  const handleRedirect = () => {
+    window.open(
+      "https://marketplace.visualstudio.com/items?itemName=Hisukurifu.codeseek-r1",
+      "_blank"
+    );
   };
 
   return (
@@ -186,10 +187,10 @@ export const BentoGridItem = ({
               </div>
 
               <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
-                icon={<IoCopyOutline />}
+                title={"codeseek-r1"}
+                icon={<IoLink />}
                 position="left"
-                handleClick={handleCopy}
+                handleClick={handleRedirect}
                 otherClasses="!bg-[#161A31]"
               />
             </div>

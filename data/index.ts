@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export const gridItems = [
   {
     id: 1,
@@ -52,7 +54,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Checkout my new VSCode Extension, codeseek-r1!",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -81,11 +83,19 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Weather Alert",
-    des: "A MERN stack weather alert application which would give weather forcast everyday at  the users email and also tips on water harvesting.",
+    title: "Ingrelicious",
+    des: "If you have ingredients lying around, just ask ingrelicious to give you a yummy recipe out of it!",
     img: "/p3.svg",
-    iconLists: ["/ejs-w.svg"],
-    link: "https://github.com/watashiwaaniket/oomdMiniProject",
+    iconLists: ["/next.svg", "/tail.svg", ""],
+    link: "https://ingrelicious.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "Slingpack",
+    des: "A crypto wallet mockup which generates solana chain public and private keys",
+    img: "/p4.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+    link: "https://slingpack.vercel.app/",
   },
 ];
 
