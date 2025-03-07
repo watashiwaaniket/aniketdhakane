@@ -83,10 +83,10 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Ingrelicious",
-    des: "If you have ingredients lying around, just ask ingrelicious to give you a yummy recipe out of it!",
+    title: "FauSol",
+    des: "Solana devnet faucet for you!",
     img: "/p3.svg",
-    iconLists: ["/next.svg", "/tail.svg", ""],
+    iconLists: ["/re.svg", "/tail.svg"],
     link: "https://ingrelicious.vercel.app/",
   },
   {
