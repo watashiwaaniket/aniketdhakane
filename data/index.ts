@@ -44,7 +44,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a UI Component Library",
+    title: "Currently working on a Second Brain App.",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -67,6 +67,14 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
+    title: "PersonAI",
+    des: "A second brain note taking app leveraging the power of AI to store and understand your notes.",
+    img: "/p0.svg",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/ejs-w.svg"],
+    link: "https://personai-rho.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Hiku-App",
     des: "A Next.js Web Application to build and customize your own hikus, powered by cloudinary AI and Mongo Atlas",
     img: "/p1.svg",
@@ -74,7 +82,7 @@ export const projects = [
     link: "https://hiku-app.vercel.app",
   },
   {
-    id: 2,
+    id: 3,
     title: "Component Cloud",
     des: "An opensource UI components library where users can submit their own code or use others code for their websites. Made with Next.js, database by supabase, secured by nextAuth and powered by vercel",
     img: "/p2.svg",
@@ -82,7 +90,7 @@ export const projects = [
     link: "https://github.com/watashiwaaniket/component-cloud",
   },
   {
-    id: 3,
+    id: 4,
     title: "FauSol",
     des: "Solana devnet faucet for you!",
     img: "/p3.svg",
@@ -90,7 +98,7 @@ export const projects = [
     link: "https://ingrelicious.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Slingpack",
     des: "A crypto wallet mockup which generates solana chain public and private keys",
     img: "/p4.svg",
