@@ -1,6 +1,6 @@
+import Link from "next/link";
 import GradientText from "./ui-components/GradientText";
 import ShinyText from "./ui-components/ShinyText";
-import GitHubCalendar from "react-github-calendar";
 
 export function Hero(){
     return(
@@ -10,28 +10,39 @@ export function Hero(){
                 <ShinyText text="👨🏻‍💻 Engineer" disabled={false} speed={3} className="custom-class" />
                 <ShinyText text="| Developer" disabled={false} speed={3} className="custom-class" />
             </div>
-            <div className="mt-14 mb-12 text-sm md:text-base">
-                Fullstack Developer based in :
+            <div className="mt-12 mb-4 text-sm md:text-base">
+                Fullstack Developer based in
                 <GradientText
                     colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
                     animationSpeed={3}
                     showBorder={false}
                     className="custom-class"
                 >
-                    Pune
+                    Pune,
                 </GradientText> 
-                , with a love for .
+                with a love for
                 <GradientText
                     colors={["#EA5B6F", "#F7CFD8", "#EA5B6F", "#F7CFD8", "#EA5B6F"]}
                     animationSpeed={3}
                     showBorder={false}
                     className="custom-class"
                 >
-                    User Centric Design
+                    User Centric Design,
                 </GradientText>
-                , I write clean and scalable code, while building reusable components for smoother development experience.
+                I write clean and scalable code, while building
+                <GradientText
+                    colors={["#FED16A", "#FAFFCA", "#FED16A", "#FAFFCA", "#FED16A"]}
+                    animationSpeed={3}
+                    showBorder={false}
+                    className="custom-class"
+                >
+                    <Link href={'https://github.com/watashiwaaniket/personai/tree/master/personai-frontend/src/components'}>Reusable Components</Link>
+                </GradientText>
+                for smoother development experience.
             </div>
-            <GitHubCalendar username="watashiwaaniket" />
+            <div>
+
+            </div>
         </div>
     )
 }
