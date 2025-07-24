@@ -23,11 +23,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Rubik', Arial, Helvetica, sans-serif;
-}
-
-.bg-graph-paper {
-  background-image:
+    background-image:
     linear-gradient(to right, #111 1px, transparent 1px),
     linear-gradient(to bottom, #111 1px, transparent 1px);
-  background-size: 20px 20px; /* Size of each square */
+  background-size: 20px 20px;
 }
