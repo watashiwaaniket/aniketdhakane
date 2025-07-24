@@ -14,7 +14,7 @@ interface Projects {
 const projects: Projects = {
   1: {
     title: 'PersonAi',
-    desc: 'Built with ReactJS and ExpressJS, allowing users to save notes and links and receive AI-generated summaries.',
+    desc: 'Ditch the dull notes. Meet PersonAi: your smart, free second brain that remembers, summarizes, and thinks with you.',
     link: 'https://personai-rho.vercel.app/',
     icon: PersonaIcon,
   },

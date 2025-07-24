@@ -13,13 +13,35 @@ const geistMono = Geist_Mono({
 });
 
 const rubik = Rubik({
-  variable: "--font-geist-sans",
-  subsets: ["latin"]
-})
+  variable: "--font-rubik",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "aniketdhakane",
-  description: "Personal Portfolio of Aniket Dhakane, showing his craft and skills",
+  title: "Aniket Dhakane",
+  description: "Personal Portfolio1651 of Aniket Dhakane, showcasing his craft and skills",
+  openGraph: {
+    title: "Aniket Dhakane - Portfolio",
+    description: "Explore the personal portfolio of Aniket Dhakane, highlighting his skills and projects.",
+    url: "https://www.aniketdhakane.xyz",
+    siteName: "Aniket Dhakane",
+    images: [
+      {
+        url: "/canvas.png",
+        width: 1200,
+        height: 630,
+        alt: "Aniket Dhakane Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Aniket Dhakane - Portfolio",
+    description: "Explore the personal portfolio of Aniket Dhakane, highlighting his skills and projects.",
+    images: ["/canvas.png"], // Replace with your image URL
+  },
 };
 
 export default function RootLayout({
