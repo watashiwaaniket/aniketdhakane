@@ -19,7 +19,7 @@ const rubik = Rubik({
 
 export const metadata: Metadata = {
   title: "Aniket Dhakane",
-  description: "Personal Portfolio1651 of Aniket Dhakane, showcasing his craft and skills",
+  description: "Personal Portfolio of Aniket Dhakane, showcasing his craft and skills",
   openGraph: {
     title: "Aniket Dhakane - Portfolio",
     description: "Explore the personal portfolio of Aniket Dhakane, highlighting his skills and projects.",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Aniket Dhakane",
     images: [
       {
-        url: "/canvas.png",
+        url: "https://www.aniketdhakane.xyz/canvas.png",
         width: 1200,
         height: 630,
         alt: "Aniket Dhakane Portfolio Preview",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aniket Dhakane - Portfolio",
     description: "Explore the personal portfolio of Aniket Dhakane, highlighting his skills and projects.",
-    images: ["/canvas.png"], // Replace with your image URL
+    images: ["https://www.aniketdhakane.xyz/canvas.png"],
   },
 };
 
