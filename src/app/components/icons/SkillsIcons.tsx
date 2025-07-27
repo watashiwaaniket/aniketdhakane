@@ -1,4 +1,4 @@
-const style = "rounded-lg p-1 size-10 hover:scale-110 transition-all duration-600 ease-in-out bg-white";
+const style = "rounded-lg p-1 size-10 bg-white";
 
 export const ReactIcon = () => {
     return <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30" className={`${style}`} fill="aqua">
