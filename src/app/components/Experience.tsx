@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ExperienceCard from "./ui-components/ExperienceCard";
 
 export default function Experience(){
@@ -10,6 +11,15 @@ export default function Experience(){
                 timeFrom="Feb 2024"
                 timeTo="Apr 2024"
             />
+            <h2 className="text-lg font-bold py-2">Freelance Experience</h2>
+            <Link href={'https://apps.apple.com/in/app/myotrek/id6747103153'}>
+            <ExperienceCard
+                title="Myotrek Gym App"
+                role="Mobile App Dev"
+                timeFrom="Feb 2025"
+                timeTo="June 2025"
+            />
+            </Link>
         </div>
     )
 }
