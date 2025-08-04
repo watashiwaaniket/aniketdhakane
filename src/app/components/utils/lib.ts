@@ -21,7 +21,7 @@ const projects: Projects = {
   2: {
     title: 'CodeSeek-r1',
     desc: 'A VSCode extension leveraging the power of deepseek-r1 running locally, while maintaining user privacy',
-    link: 'https://github.com/watashiwaaniket/another-project/',
+    link: 'https://marketplace.visualstudio.com/items?itemName=Hisukurifu.codeseek-r1',
     icon: CodeSeekIcon,
   },
   3: {
