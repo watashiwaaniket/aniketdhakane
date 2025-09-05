@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: black;
     --foreground: #ededed;
   }
 }
@@ -24,7 +24,7 @@ body {
   color: var(--foreground);
   font-family: 'Rubik', Arial, Helvetica, sans-serif;
     background-image:
-    linear-gradient(to right, #222 1px, transparent 1px),
-    linear-gradient(to bottom, #222 1px, transparent 1px);
-  background-size: 20px 20px;
+    linear-gradient(to right, #0a0a0a 1px, transparent 1px),
+    linear-gradient(to bottom, #0a0a0a 1px, transparent 1px);
+  background-size: 24px 24px;
 }

@@ -21,13 +21,13 @@ const projects: Projects = {
   2: {
     title: 'CodeSeek-r1',
     desc: 'A VSCode extension leveraging the power of deepseek-r1 running locally, while maintaining user privacy',
-    link: 'https://github.com/watashiwaaniket/another-project/',
+    link: 'https://github.com/watashiwaaniket/codeseek',
     icon: CodeSeekIcon,
   },
   3: {
     title: 'osap',
     desc: 'Platform catering to open source contributors to find the next interesting project to tinker around with',
-    link: 'https://github.com/watashiwaaniket/osap',
+    link: 'https://osaplfm.vercel.app/',
     icon: OsapIcon,
   },
   4: {
