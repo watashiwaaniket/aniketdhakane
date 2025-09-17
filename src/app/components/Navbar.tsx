@@ -14,7 +14,7 @@ export function Navbar(){
                 showBorder={true}
                 className="custom-class"
             >
-                <Link href={'/Aniket_Dhakane.pdf'}>resume</Link>
+                <Link href={'/aniket-dhakane-latest.pdf'}>resume</Link>
             </GradientText>
         </div>
     )
