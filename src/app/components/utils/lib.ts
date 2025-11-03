@@ -1,4 +1,4 @@
-import { PersonaIcon, CodeSeekIcon, OsapIcon, HikuIcon, ServoIcon, PoemsForHerIcon } from "../icons/ProjectIcons";
+import { PersonaIcon, CodeSeekIcon, OsapIcon, HikuIcon, ServoIcon, PoemsForHerIcon, AlphatechIcon } from "../icons/ProjectIcons";
 
 interface Project {
   title: string;
@@ -29,6 +29,12 @@ export const fullstackProjects: Projects = {
     desc: 'A sample Hiku generating application which uses Cloudinary AI image generation for generating the cards',
     link: 'https://hiku-app.vercel.app/',
     icon: HikuIcon,
+  },
+  4: {
+    title: 'Alphatech Solutions',
+    desc: 'Landing page with realtime dashoard for a training institute',
+    link: 'https://preview-alphatechsolutions.vercel.app/',
+    icon: AlphatechIcon,
   }
 };
 
