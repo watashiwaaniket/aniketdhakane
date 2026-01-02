@@ -1,4 +1,3 @@
-import pfhIcon from '/pfh.ico';
 import Image from "next/image";
 
 const style = "rounded-lg p-1 size-8 hover:scale-110 transition-all duration-600 ease-in-out";

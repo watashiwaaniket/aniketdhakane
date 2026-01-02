@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ShinyText from "./ui-components/ShinyText";
 import Image from "next/image";
 
 export default function Footer(){
@@ -13,10 +12,6 @@ export default function Footer(){
             <Link href={'https://music.apple.com/in/album/after-hours/1505683705?i=1505683998'}>
                 <Image src='/ah.jpg' alt="" height={240} width={240} className="rounded-xl"/>
             </Link>
-            </div>
-            <hr className="text-gray-500"/>
-            <div className="p-4 pb-8 text-sm">
-                <ShinyText text={`© 2025 Aniket Dhakane`} disabled={false} speed={3} className="custom-class" />
             </div>
         </div>
     )

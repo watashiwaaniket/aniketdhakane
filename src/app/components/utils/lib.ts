@@ -25,9 +25,9 @@ export const fullstackProjects: Projects = {
     icon: OsapIcon,
   },
   3: {
-    title: 'Hiku App',
-    desc: 'A sample Hiku generating application which uses Cloudinary AI image generation for generating the cards',
-    link: 'https://hiku-app.vercel.app/',
+    title: 'Aura ProTech Consulting',
+    desc: 'Website for a client, contains two landing pages and a CMS',
+    link: 'https://auraprotech.vercel.app/',
     icon: HikuIcon,
   },
   4: {
@@ -40,17 +40,11 @@ export const fullstackProjects: Projects = {
 
 export const frontendProjects: Projects = {
   1: {
-    title: 'Servo UI',
-    desc: 'Landing page of a UI component library made using shaders and motion',
-    link: 'https://servoui.vercel.app/',
+    title: 'wiredraw',
+    desc: 'WIP excalidraw clone',
+    link: 'https://wiredraw.vercel.app/',
     icon: ServoIcon
   },
-  2: {
-    title: 'Poems For Her',
-    desc: "Poems which I once wrote for her.",
-    link: 'https://poemsforher.vercel.app/',
-    icon: PoemsForHerIcon
-  }
 }
 
 export const miscProjects: Projects = {
