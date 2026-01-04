@@ -4,7 +4,6 @@ import { Socials } from "./components/Socials";
 import { Projects } from "./components/Projects";
 import SkillSection from "./components/SkillSection";
 import Experience from "./components/Experience";
-import Footer from "./components/Footer";
 import Footer2 from "./components/Footer2";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
         <Projects />
         <SkillSection />
         <Experience />
-        {/* <Footer /> */}
       </div>
       <Footer2 />
     </div>
