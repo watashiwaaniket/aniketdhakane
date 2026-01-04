@@ -12,7 +12,7 @@ export default function ExperienceCard({
   timeTo,
 }: ExperienceCardProps) {
   return (
-    <div className="flex justify-between items-center p-4 rounded-xl border-gray-950 border">
+    <div className="flex justify-between items-center p-4 rounded-xl border-gray-800 border">
       <div>
         <h1 className="text-sm font-bold">{title}</h1>
         <p className="text-xs font-light">{role}</p>

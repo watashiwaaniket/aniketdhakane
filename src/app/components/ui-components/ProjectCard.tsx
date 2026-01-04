@@ -12,7 +12,7 @@ export interface ProjectCardProps {
 export function ProjectCard({ icon, title, desc, link }: ProjectCardProps) {
   return (
     <div
-      className="flex flex-col w-96 md:w-80 h-36 border border-gray-950 rounded-xl p-5 m-1 relative"
+      className="flex flex-col w-96 md:w-80 h-36 border border-gray-800 rounded-xl p-5 m-1 relative"
       style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
     >
       <div className="pb-2 flex gap-2 items-center">
