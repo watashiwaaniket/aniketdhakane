@@ -5,8 +5,8 @@ import ShinyText from "./ui-components/ShinyText";
 export function Hero() {
   return (
     <div className="mt-4">
-      <h1 className="text-3xl md:text-4xl font-semibold">Aniket Dhakane 𓅓</h1>
-      <div className="space-x-1 text-md">
+      <h1 className="text-xl md:text-2xl font-semibold">Aniket Dhakane 𓅓</h1>
+      <div className="space-x-1 text-xs">
         <ShinyText
           text="👨🏻‍💻 Jr Software Engineer"
           disabled={false}
@@ -20,7 +20,7 @@ export function Hero() {
           className="custom-class"
         />
       </div>
-      <div className="mt-12 mb-4 text-sm md:text-base">
+      <div className="mt-12 mb-4 text-sm">
         Fullstack Developer based in
         <GradientText
           colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}

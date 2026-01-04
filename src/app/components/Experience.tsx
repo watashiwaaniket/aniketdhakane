@@ -4,10 +4,10 @@ import ExperienceCard from "./ui-components/ExperienceCard";
 export default function Experience() {
   return (
     <div className="pb-8">
-      <h1 className="text-lg font-bold pb-2">Experience</h1>
+      <h1 className="text-md font-bold pb-2">Experience</h1>
       <div className="flex flex-col gap-3.5">
         <ExperienceCard
-          title=""
+          title="Zensar Technologies"
           role="Jr Software Engineer"
           timeFrom="Oct 2025"
           timeTo="Present"
@@ -19,7 +19,7 @@ export default function Experience() {
           timeTo="Apr 2024"
         />
       </div>
-      <h2 className="text-lg font-bold py-2">Freelance Experience</h2>
+      <h2 className="text-md font-bold py-2">Freelance Experience</h2>
       <Link href={"https://apps.apple.com/in/app/myotrek/id6747103153"}>
         <ExperienceCard
           title="Myotrek Gym App"

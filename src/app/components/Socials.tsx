@@ -9,7 +9,7 @@ import { motion } from "motion/react";
 export function Socials() {
   return (
     <div className="my-4">
-      <h1 className="text-lg font-bold">Socials</h1>
+      <h1 className="text-md font-bold">Socials</h1>
       <div className="flex py-1 space-x-3">
         <Link href={"https://x.com/astriknormal"}>
           <motion.div

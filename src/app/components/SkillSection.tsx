@@ -35,7 +35,7 @@ export default function SkillSection() {
   ];
   return (
     <div className="my-6">
-      <h1 className="text-lg font-bold">Github Stats</h1>
+      <h1 className="text-md font-bold">Github Stats</h1>
       <GitHubCalendar
         username="watashiwaaniket"
         colorScheme="dark"
@@ -45,7 +45,7 @@ export default function SkillSection() {
         blockSize={8}
         fontSize={12}
       />
-      <h1 className="text-lg font-bold mt-8">Skills</h1>
+      <h1 className="text-md font-bold mt-8">Skills</h1>
       <div className="flex space-x-3 space-y-3 py-1 flex-wrap">
         {icons.map((Icon, index) => (
           <motion.div

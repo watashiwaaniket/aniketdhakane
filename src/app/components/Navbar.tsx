@@ -5,12 +5,12 @@ import GradientText from "./ui-components/GradientText";
 
 export function Navbar() {
   return (
-    <div className="flex space-x-2 py-4 md:p-6 justify-end w-full md:text-xl">
+    <div className="flex space-x-4 py-4 md:p-6 justify-end w-full text-sm">
       <Link href={"/wall"}>
-        <p className="hover:underline">wall</p>
+        <p className="border px-4 border-neutral-800 rounded-lg hover:bg-neutral-900">wall</p>
       </Link>
       <Link href={"https://dev.to/hisukurifu"}>
-        <p className="hover:underline">blog</p>
+        <p className="border px-4 border-neutral-800 rounded-lg hover:bg-neutral-900">blog</p>
       </Link>
       <GradientText
         colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
