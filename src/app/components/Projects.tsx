@@ -12,11 +12,10 @@ export function Projects() {
       <div className="flex flex-wrap items-center">
         {Object.keys(fullstackProjects).map((key) => {
           const project = fullstackProjects[Number(key)];
-          const IconComponent = project.icon;
           return (
             <ProjectCard
               key={key}
-              icon={<IconComponent />}
+              image={project.image}
               title={project.title}
               desc={project.desc}
               link={project.link}
@@ -28,11 +27,10 @@ export function Projects() {
       <div className="flex flex-wrap items-center">
         {Object.keys(frontendProjects).map((key) => {
           const project = frontendProjects[Number(key)];
-          const IconComponent = project.icon;
           return (
             <ProjectCard
               key={key}
-              icon={<IconComponent />}
+              image={project.image}
               title={project.title}
               desc={project.desc}
               link={project.link}
@@ -44,11 +42,10 @@ export function Projects() {
       <div className="flex flex-wrap items-center">
         {Object.keys(miscProjects).map((key) => {
           const project = miscProjects[Number(key)];
-          const IconComponent = project.icon;
           return (
             <ProjectCard
               key={key}
-              icon={<IconComponent />}
+              image={project.image}
               title={project.title}
               desc={project.desc}
               link={project.link}
