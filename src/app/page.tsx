@@ -1,9 +1,10 @@
 import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
 import { Socials } from "./components/Socials";
-import { Projects } from "./components/Projects";
-import SkillSection from "./components/SkillSection";
+import GitHubStats from "./components/GitHubStats";
 import Experience from "./components/Experience";
+import SkillsAndCertifications from "./components/SkillsAndCertifications";
+import { Projects } from "./components/Projects";
 import Footer2 from "./components/Footer2";
 import SnowfallView from "./components/SnowfallView";
 
@@ -15,9 +16,10 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Socials />
-        <Projects />
-        <SkillSection />
+        <GitHubStats />
         <Experience />
+        <SkillsAndCertifications />
+        <Projects />
       </div>
       <Footer2 />
     </div>

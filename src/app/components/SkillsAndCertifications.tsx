@@ -1,5 +1,4 @@
 "use client";
-import GitHubCalendar from "react-github-calendar";
 import {
   AWSIcon,
   DockerIcon,
@@ -16,8 +15,9 @@ import {
   TSIcon,
 } from "./icons/SkillsIcons";
 import { motion } from "motion/react";
+import CertificationCard from "./ui-components/CertificationCard";
 
-export default function SkillSection() {
+export default function SkillsAndCertifications() {
   const icons = [
     ReactIcon,
     NextIcon,
@@ -35,17 +35,7 @@ export default function SkillSection() {
   ];
   return (
     <div className="my-6">
-      <h1 className="text-md font-bold">Github Stats</h1>
-      <GitHubCalendar
-        username="watashiwaaniket"
-        colorScheme="dark"
-        theme={{
-          dark: ["#333", "rgb(14, 214, 214)"],
-        }}
-        blockSize={8}
-        fontSize={12}
-      />
-      <h1 className="text-md font-bold mt-8">Skills</h1>
+      <h1 className="text-md font-bold">Skills and Certifications</h1>
       <div className="flex space-x-3 space-y-3 py-1 flex-wrap">
         {icons.map((Icon, index) => (
           <motion.div
@@ -58,6 +48,16 @@ export default function SkillSection() {
           </motion.div>
         ))}
       </div>
+
+      <h2 className="text-sm font-semibold mt-5 mb-2">Certifications</h2>
+      <CertificationCard
+        title="Claude Certified Architect — Foundations (CCA-F)"
+        issuer="Anthropic"
+        issued="Jun 2026"
+        expires="Dec 2026"
+        credentialId="h5phb8iwbwrw"
+        verifyUrl="https://verify.skilljar.com/c/h5phb8iwbwrw"
+      />
     </div>
   );
 }

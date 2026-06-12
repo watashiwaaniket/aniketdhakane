@@ -4,7 +4,6 @@ import { ProjectCard } from "./ui-components/ProjectCard";
 import { frontendProjects, fullstackProjects, miscProjects } from "./utils/lib";
 
 export function Projects() {
-  console.log(fullstackProjects[1].desc);
   return (
     <div className="my-4">
       <h1 className="text-md font-bold">Projects</h1>
