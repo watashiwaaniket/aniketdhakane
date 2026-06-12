@@ -8,9 +8,9 @@ export default function GitHubStats() {
       <h1 className="text-md font-bold">Github Stats</h1>
       <GitHubCalendar
         username="watashiwaaniket"
-        colorScheme="dark"
+        colorScheme="light"
         theme={{
-          dark: ["#333", "rgb(14, 214, 214)"],
+          light: ["#d4dcd6", "var(--accent-blue)"],
         }}
         blockSize={8}
         fontSize={12}

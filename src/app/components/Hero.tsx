@@ -23,7 +23,7 @@ export function Hero() {
       <div className="mt-12 mb-4 text-sm">
         Fullstack Developer based in
         <GradientText
-          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          colors={["var(--accent-sage)", "var(--accent-blue)", "var(--accent-sage)", "var(--accent-blue)", "var(--accent-sage)"]}
           animationSpeed={3}
           showBorder={false}
           className="custom-class"
@@ -32,7 +32,7 @@ export function Hero() {
         </GradientText>
         with a love for
         <GradientText
-          colors={["#EA5B6F", "#F7CFD8", "#EA5B6F", "#F7CFD8", "#EA5B6F"]}
+          colors={["#7a8f7a", "#6b8fa8", "#7a8f7a", "#6b8fa8", "#7a8f7a"]}
           animationSpeed={3}
           showBorder={false}
           className="custom-class"
@@ -41,7 +41,7 @@ export function Hero() {
         </GradientText>
         I write clean and scalable code, while building
         <GradientText
-          colors={["#FED16A", "#FAFFCA", "#FED16A", "#FAFFCA", "#FED16A"]}
+          colors={["var(--accent-sage)", "var(--accent-blue)", "var(--accent-sage)", "var(--accent-blue)", "var(--accent-sage)"]}
           animationSpeed={3}
           showBorder={false}
           className="custom-class"
