@@ -26,14 +26,15 @@ export function Projects() {
 
       <h2 className="text-sm font-semibold p-1">Fullstack Projects</h2>
       <motion.div
-        className="flex flex-wrap items-center"
+        className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
       >
-        {Object.keys(fullstackProjects).map((key) => {
+        {Object.keys(fullstackProjects).map((key, index) => {
           const project = fullstackProjects[Number(key)];
+          const visualSide = index % 2 === 0 ? "right" : "left";
           return (
             <motion.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
               <ProjectCard
@@ -41,6 +42,7 @@ export function Projects() {
                 title={project.title}
                 desc={project.desc}
                 link={project.link}
+                visualSide={visualSide}
               />
             </motion.div>
           );
@@ -49,7 +51,7 @@ export function Projects() {
 
       <h2 className="text-sm font-semibold p-1">Frontend Projects</h2>
       <motion.div
-        className="flex flex-wrap items-center"
+        className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -64,6 +66,7 @@ export function Projects() {
                 title={project.title}
                 desc={project.desc}
                 link={project.link}
+                visualSide="left"
               />
             </motion.div>
           );
@@ -72,7 +75,7 @@ export function Projects() {
 
       <h2 className="text-sm font-semibold p-1">Misc Projects</h2>
       <motion.div
-        className="flex flex-wrap items-center"
+        className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -87,6 +90,7 @@ export function Projects() {
                 title={project.title}
                 desc={project.desc}
                 link={project.link}
+                visualSide="right"
               />
             </motion.div>
           );

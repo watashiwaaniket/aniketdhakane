@@ -9,7 +9,7 @@ export function Navbar() {
     <div className="flex space-x-4 py-4 md:p-6 justify-end w-full text-sm">
       <Link href={"/wall"}>
         <motion.p
-          className="border px-4 border-[var(--border)] rounded-lg hover:bg-[#e6ede5] cursor-pointer"
+          className="border px-4 border-[var(--border)] rounded-xl hover:bg-[#e6ede5] cursor-pointer text-lg"
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 12 }}
         >
@@ -18,7 +18,7 @@ export function Navbar() {
       </Link>
       <Link href={"https://dev.to/hisukurifu"}>
         <motion.p
-          className="border px-4 border-[var(--border)] rounded-lg hover:bg-[#e6ede5] cursor-pointer"
+          className="border px-4 border-[var(--border)] rounded-xl hover:bg-[#e6ede5] cursor-pointer text-lg"
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 12 }}
         >
@@ -28,7 +28,7 @@ export function Navbar() {
       <motion.div
         whileHover={{ scale: 1.2 }}
         transition={{ type: "spring", stiffness: 400, damping: 12 }}
-        className="cursor-pointer"
+        className="cursor-pointer text-lg border border-[var(--border)] rounded-xl px-2 bg-green-100/30"
       >
         <GradientText
           colors={[
@@ -39,7 +39,7 @@ export function Navbar() {
             "var(--accent-sage)",
           ]}
           animationSpeed={3}
-          showBorder={true}
+          showBorder={false}
           className="custom-class"
         >
           <Link href={"/aniketdhakane.pdf"}>resume</Link>

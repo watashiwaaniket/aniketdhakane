@@ -21,7 +21,7 @@ export default function ExperienceCard({
 
   const visualBox = visualVideo ? (
     <div
-      className={`relative w-90 h-72 flex-shrink-0 ${isVisualRight ? "rounded-r-3xl" : "rounded-l-3xl"} overflow-hidden self-start`}
+      className={`relative w-90 h-72 flex-shrink-0 ${isVisualRight ? "rounded-r-xl" : "rounded-l-xl"} overflow-hidden self-start`}
     >
       <video
         src={visualVideo}
@@ -63,7 +63,7 @@ export default function ExperienceCard({
   );
 
   return (
-    <div className="bg-[var(--card)] border-1 border-[var(--border)] rounded-3xl">
+    <div className="bg-[var(--card)] border-1 border-[var(--border)] rounded-xl">
       <div className="flex gap-4 items-start">
         {isVisualRight ? (
           <>
