@@ -2,7 +2,7 @@
 
 import { ProjectCard } from "./ui-components/ProjectCard";
 import { frontendProjects, fullstackProjects, miscProjects } from "./utils/lib";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 const container = {
   hidden: {},
@@ -25,7 +25,7 @@ export function Projects() {
       <h1 className="text-md font-bold">Projects</h1>
 
       <h2 className="text-sm font-semibold p-1">Fullstack Projects</h2>
-      <motion.div
+      <m.div
         className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
@@ -36,7 +36,7 @@ export function Projects() {
           const project = fullstackProjects[Number(key)];
           const visualSide = index % 2 === 0 ? "right" : "left";
           return (
-            <motion.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
+            <m.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
               <ProjectCard
                 image={project.image}
                 title={project.title}
@@ -44,13 +44,13 @@ export function Projects() {
                 link={project.link}
                 visualSide={visualSide}
               />
-            </motion.div>
+            </m.div>
           );
         })}
-      </motion.div>
+      </m.div>
 
       <h2 className="text-sm font-semibold p-1">Frontend Projects</h2>
-      <motion.div
+      <m.div
         className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
@@ -60,7 +60,7 @@ export function Projects() {
         {Object.keys(frontendProjects).map((key) => {
           const project = frontendProjects[Number(key)];
           return (
-            <motion.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
+            <m.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
               <ProjectCard
                 image={project.image}
                 title={project.title}
@@ -68,13 +68,13 @@ export function Projects() {
                 link={project.link}
                 visualSide="left"
               />
-            </motion.div>
+            </m.div>
           );
         })}
-      </motion.div>
+      </m.div>
 
       <h2 className="text-sm font-semibold p-1">Misc Projects</h2>
-      <motion.div
+      <m.div
         className="flex flex-col gap-4"
         variants={container}
         initial="hidden"
@@ -84,7 +84,7 @@ export function Projects() {
         {Object.keys(miscProjects).map((key) => {
           const project = miscProjects[Number(key)];
           return (
-            <motion.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
+            <m.div key={key} variants={cardVariants} transition={{ duration: 0.55, ease: [0.21, 0.92, 0.25, 1] }}>
               <ProjectCard
                 image={project.image}
                 title={project.title}
@@ -92,10 +92,10 @@ export function Projects() {
                 link={project.link}
                 visualSide="right"
               />
-            </motion.div>
+            </m.div>
           );
         })}
-      </motion.div>
+      </m.div>
     </div>
   );
 }

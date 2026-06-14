@@ -1,14 +1,18 @@
-"use client";
-
-import { Hero } from "./components/Hero";
+import dynamic from "next/dynamic";
 import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
 import { Socials } from "./components/Socials";
-import GitHubStats from "./components/GitHubStats";
-import Experience from "./components/Experience";
-import SkillsAndCertifications from "./components/SkillsAndCertifications";
-import { Projects } from "./components/Projects";
-import Footer2 from "./components/Footer2";
-import { motion } from "motion/react";
+import { FadeInSection } from "./components/FadeInSection";
+
+const GitHubStats = dynamic(() => import("./components/GitHubStats"));
+const Experience = dynamic(() => import("./components/Experience"));
+const SkillsAndCertifications = dynamic(
+  () => import("./components/SkillsAndCertifications")
+);
+const Projects = dynamic(() =>
+  import("./components/Projects").then((mod) => ({ default: mod.Projects }))
+);
+const Footer2 = dynamic(() => import("./components/Footer2"));
 
 export default function Home() {
   return (
@@ -16,48 +20,23 @@ export default function Home() {
       <div className="w-screen p-4 md:p-2 md:w-2xl flex flex-col">
         <Navbar />
         <Hero />
-
         <Socials />
 
-        {/* Cinematic scrollytelling: GitHub as early credibility */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.21, 0.92, 0.25, 1] }}
-        >
+        <FadeInSection>
           <GitHubStats />
-        </motion.div>
+        </FadeInSection>
 
-        {/* Premium motion cinema: Experience arrives with presence */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: [0.21, 0.92, 0.25, 1] }}
-        >
+        <FadeInSection y={40} duration={0.8}>
           <Experience />
-        </motion.div>
+        </FadeInSection>
 
-        {/* Skills & Certifications with staggered inner motion */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.75, ease: [0.21, 0.92, 0.25, 1] }}
-        >
+        <FadeInSection y={35} duration={0.75}>
           <SkillsAndCertifications />
-        </motion.div>
+        </FadeInSection>
 
-        {/* Projects at the bottom — cinematic reveal as final showcase */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.85, ease: [0.21, 0.92, 0.25, 1] }}
-        >
+        <FadeInSection y={50} duration={0.85}>
           <Projects />
-        </motion.div>
+        </FadeInSection>
       </div>
 
       <Footer2 />

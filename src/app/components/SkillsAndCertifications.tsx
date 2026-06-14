@@ -14,10 +14,11 @@ import {
   TailwindIcon,
   TSIcon,
 } from "./icons/SkillsIcons";
-import { motion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import CertificationCard from "./ui-components/CertificationCard";
 
 export default function SkillsAndCertifications() {
+  const prefersReducedMotion = useReducedMotion();
   const icons = [
     ReactIcon,
     NextIcon,
@@ -52,7 +53,7 @@ export default function SkillsAndCertifications() {
     <div className="my-6">
       <h1 className="text-md font-bold">Skills and Certifications</h1>
 
-      <motion.div
+      <m.div
         className="flex space-x-3 space-y-3 py-1 flex-wrap"
         variants={containerVariants}
         initial="hidden"
@@ -60,17 +61,18 @@ export default function SkillsAndCertifications() {
         viewport={{ once: true }}
       >
         {icons.map((Icon, index) => (
-          <motion.div
+          <m.div
             key={index}
-            variants={itemVariants}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8, transition: { duration: 0.1 } }}
+            variants={prefersReducedMotion ? undefined : itemVariants}
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.15 }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.9 }}
             transition={{ duration: 0.3 }}
+            className="max-md:transform-none"
           >
             <Icon />
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
 
       <h2 className="text-sm font-semibold mt-5 mb-2">Certifications</h2>
       <CertificationCard

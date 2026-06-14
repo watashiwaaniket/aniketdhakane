@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
+
 export interface ExperienceCardProps {
   title: string;
   role: string;
   timeFrom: string;
   timeTo: string;
-  visualVideo?: string;
+  image?: string;
   visualSide?: "left" | "right";
 }
 
@@ -14,28 +16,29 @@ export default function ExperienceCard({
   role,
   timeFrom,
   timeTo,
-  visualVideo,
+  image,
   visualSide = "right",
 }: ExperienceCardProps) {
   const isVisualRight = visualSide === "right";
 
-  const visualBox = visualVideo ? (
+  const visualBox = image ? (
     <div
-      className={`relative w-90 h-72 flex-shrink-0 ${isVisualRight ? "rounded-r-xl" : "rounded-l-xl"} overflow-hidden self-start`}
+      className={`relative w-full md:w-80 h-48 md:h-72 flex-shrink-0 overflow-hidden self-start rounded-2xl md:rounded-t-none ${isVisualRight ? "md:rounded-r-3xl" : "md:rounded-l-3xl"}`}
     >
-      <video
-        src={visualVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
+      <Image
+        src={image}
+        alt={title}
+        width={800}
+        height={466}
+        sizes="(max-width: 768px) 100vw, 320px"
         className="w-full h-full object-cover"
+        loading="lazy"
       />
     </div>
   ) : null;
 
   const detailsBox = (
-    <div className="flex-1 rounded-2xl p-8">
+    <div className="flex-1 rounded-2xl p-4 md:p-8">
       <h1 className="font-semibold text-lg tracking-tight text-[var(--foreground)]">
         {title}
       </h1>
@@ -63,17 +66,17 @@ export default function ExperienceCard({
   );
 
   return (
-    <div className="bg-[var(--card)] border-1 border-[var(--border)] rounded-xl">
-      <div className="flex gap-4 items-start">
+    <div className="bg-[var(--card)] border-1 border-[var(--border)] rounded-xl overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-4 items-start">
         {isVisualRight ? (
           <>
-            {detailsBox}
-            {visualBox}
+            <div className="order-2 md:order-1 flex-1">{detailsBox}</div>
+            <div className="order-1 md:order-2 w-full md:w-auto">{visualBox}</div>
           </>
         ) : (
           <>
-            {visualBox}
-            {detailsBox}
+            <div className="order-1 md:order-1 w-full md:w-auto">{visualBox}</div>
+            <div className="order-2 md:order-2 flex-1">{detailsBox}</div>
           </>
         )}
       </div>

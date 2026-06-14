@@ -1,31 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import GradientText from "./ui-components/GradientText";
 
 export function Navbar() {
   return (
     <div className="flex space-x-4 py-4 md:p-6 justify-end w-full text-sm">
       <Link href={"/wall"}>
-        <motion.p
+        <m.p
           className="border px-4 border-[var(--border)] rounded-xl hover:bg-[#e6ede5] cursor-pointer text-lg"
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 12 }}
         >
           wall
-        </motion.p>
+        </m.p>
       </Link>
       <Link href={"https://dev.to/hisukurifu"}>
-        <motion.p
+        <m.p
           className="border px-4 border-[var(--border)] rounded-xl hover:bg-[#e6ede5] cursor-pointer text-lg"
           whileHover={{ scale: 1.2 }}
           transition={{ type: "spring", stiffness: 400, damping: 12 }}
         >
           blog
-        </motion.p>
+        </m.p>
       </Link>
-      <motion.div
+      <m.div
         whileHover={{ scale: 1.2 }}
         transition={{ type: "spring", stiffness: 400, damping: 12 }}
         className="cursor-pointer text-lg border border-[var(--border)] rounded-xl px-2 bg-green-100/30"
@@ -44,7 +44,7 @@ export function Navbar() {
         >
           <Link href={"/aniketdhakane.pdf"}>resume</Link>
         </GradientText>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

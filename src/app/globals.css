@@ -15,12 +15,50 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-rubik);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Rubik", Arial, Helvetica, sans-serif;
+  font-family: var(--font-rubik), Arial, Helvetica, sans-serif;
+}
+
+.below-fold-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+@media (max-width: 767px) {
+  .shiny-text {
+    animation: none;
+    color: var(--text-muted);
+    background: none;
+  }
+
+  .text-content {
+    animation: none;
+    color: var(--accent-sage);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .shiny-text,
+  .text-content,
+  .gradient-overlay {
+    animation: none !important;
+  }
 }

@@ -4,7 +4,7 @@ import { GithubIcon } from "./icons/GithubIcon";
 import { XIcon } from "./icons/XIcon";
 import { LinIcon } from "./icons/LinIcon";
 import { MailIcon } from "./icons/MailIcon";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 export function Socials() {
   return (
@@ -12,7 +12,7 @@ export function Socials() {
       <h1 className="text-md font-bold">Socials</h1>
       <div className="flex py-1 space-x-3">
         <Link href={"https://x.com/astriknormal"}>
-          <motion.div
+          <m.div
             whileHover={{
               scale: 1.2,
             }}
@@ -20,10 +20,10 @@ export function Socials() {
             transition={{ duration: 0.3 }}
           >
             <XIcon />
-          </motion.div>
+          </m.div>
         </Link>
         <Link href={"https://github.com/watashiwaaniket"}>
-          <motion.div
+          <m.div
             whileHover={{
               scale: 1.2,
             }}
@@ -31,10 +31,10 @@ export function Socials() {
             transition={{ duration: 0.3 }}
           >
             <GithubIcon />
-          </motion.div>
+          </m.div>
         </Link>
         <Link href={"https://www.linkedin.com/in/aniket-dhakane-9b06a125b/"}>
-          <motion.div
+          <m.div
             whileHover={{
               scale: 1.2,
             }}
@@ -42,10 +42,10 @@ export function Socials() {
             transition={{ duration: 0.3 }}
           >
             <LinIcon />
-          </motion.div>
+          </m.div>
         </Link>
         <Link href={"mailto:aniketdhakane3@gmail.com"}>
-          <motion.div
+          <m.div
             whileHover={{
               scale: 1.2,
             }}
@@ -53,7 +53,7 @@ export function Socials() {
             transition={{ duration: 0.3 }}
           >
             <MailIcon />
-          </motion.div>
+          </m.div>
         </Link>
       </div>
     </div>

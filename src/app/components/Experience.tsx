@@ -1,7 +1,7 @@
 "use client";
 
 import ExperienceCard from "./ui-components/ExperienceCard";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 export default function Experience() {
   return (
@@ -9,7 +9,7 @@ export default function Experience() {
       <h1 className="text-md font-bold pb-2">Experience</h1>
 
       <div className="flex flex-col gap-3.5">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -20,12 +20,11 @@ export default function Experience() {
             role="Jr Software Engineer"
             timeFrom="Oct 2025"
             timeTo="Present"
-            visualVideo="/ascii-butterfly.mp4"
             visualSide="right"
           />
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,14 +39,13 @@ export default function Experience() {
             role="Software Developer Intern"
             timeFrom="Feb 2024"
             timeTo="Apr 2024"
-            visualVideo="/ascii-jellyfish.mp4"
             visualSide="left"
           />
-        </motion.div>
+        </m.div>
       </div>
 
       <h2 className="text-md font-bold py-2">Freelance Experience</h2>
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -58,10 +56,9 @@ export default function Experience() {
           role="Mobile App Dev"
           timeFrom="Feb 2025"
           timeTo="June 2025"
-          visualVideo="/ascii-flower-blooming.mp4"
           visualSide="right"
         />
-      </motion.div>
+      </m.div>
     </div>
   );
 }

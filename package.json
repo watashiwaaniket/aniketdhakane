@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.68",
-    "gsap": "^3.13.0",
     "motion": "^12.23.9",
     "next": "^15.5.12",
     "react": "19.1.0",

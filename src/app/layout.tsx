@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Rubik } from "next/font/google";
+import { Geist_Mono, Rubik } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { MotionProvider } from "./components/MotionProvider";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "Aniket Dhakane",
     images: [
       {
-        url: "https://www.aniketdhakane.xyz/canvas.png",
+        url: "https://www.aniketdhakane.xyz/canvas.webp",
         width: 1200,
         height: 630,
         alt: "Aniket Dhakane Portfolio Preview",
@@ -40,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aniket Dhakane - Portfolio",
     description: "Explore the personal portfolio of Aniket Dhakane, highlighting his skills and projects.",
-    images: ["https://www.aniketdhakane.xyz/canvas.png"],
+    images: ["https://www.aniketdhakane.xyz/canvas.webp"],
   },
 };
 
@@ -52,12 +50,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" data-theme="light">
       <head>
-        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" href="/favicon.webp" type="image/webp" sizes="192x192" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable} antialiased`}
+        className={`${geistMono.variable} ${rubik.variable} antialiased`}
       >
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );
