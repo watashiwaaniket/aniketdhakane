@@ -151,10 +151,10 @@ export default function LastFmWidget() {
 
       {status === "loading" && (
         <div className="mt-2 flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
-          <div className="h-14 w-14 shrink-0 animate-pulse rounded-lg bg-[#e6ede5]" />
+          <div className="h-14 w-14 shrink-0 animate-pulse rounded-lg bg-[var(--surface-muted)]" />
           <div className="min-w-0 flex-1 space-y-2">
-            <div className="h-3.5 w-2/3 animate-pulse rounded bg-[#e6ede5]" />
-            <div className="h-3 w-1/2 animate-pulse rounded bg-[#e6ede5]" />
+            <div className="h-3.5 w-2/3 animate-pulse rounded bg-[var(--surface-muted)]" />
+            <div className="h-3 w-1/2 animate-pulse rounded bg-[var(--surface-muted)]" />
           </div>
         </div>
       )}
@@ -178,9 +178,9 @@ export default function LastFmWidget() {
           href={track.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 transition hover:bg-[#e6ede5]/40"
+          className="mt-2 flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 transition-[background-color] duration-200 hover:bg-[var(--surface-hover)]"
         >
-          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[#e6ede5]">
+          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-muted)]">
             {track.image ? (
               // eslint-disable-next-line @next/next/no-img-element -- remote Last.fm art on static export
               <img

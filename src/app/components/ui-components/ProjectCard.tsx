@@ -33,7 +33,7 @@ export function ProjectCard({
         width={800}
         height={466}
         sizes="(max-width: 768px) 100vw, 320px"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        className="w-full h-full object-cover outline outline-1 outline-[var(--image-outline)] group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
       />
     </div>

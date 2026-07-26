@@ -24,7 +24,7 @@ export default function CertificationCard({
       href={verifyUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="block p-4 rounded-xl border border-[var(--border)] hover:border-[var(--accent-sage)] hover:bg-[#f0f4ee] transition-all duration-200 group bg-[var(--card)]"
+      className="block p-4 rounded-xl border border-[var(--border)] hover:border-[var(--accent-sage)] hover:bg-[var(--surface-soft)] transition-[background-color,border-color] duration-200 group bg-[var(--card)]"
     >
       <div className="flex flex-col gap-1.5">
         <div className="flex items-start justify-between gap-3">

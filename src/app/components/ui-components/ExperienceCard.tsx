@@ -48,7 +48,7 @@ export default function ExperienceCard({
       </p>
 
       <div className="mt-3 flex items-center gap-2 text-xs">
-        <span className="px-2 py-0.5 rounded bg-[#e6ede5] text-[var(--text-muted)]">
+        <span className="px-2 py-0.5 rounded bg-[var(--surface-muted)] text-[var(--text-muted)]">
           {timeTo === "Present" ? "Current" : "Past"}
         </span>
         {title.includes("Myotrek") && (

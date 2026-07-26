@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { useTheme } from "./ThemeProvider";
 
 const GrainGradient = dynamic(
   () =>
@@ -9,13 +10,20 @@ const GrainGradient = dynamic(
   { ssr: false }
 );
 
-function StaticFooterGradient() {
+/** Matches page --background so the shader base blends with the site */
+const COLOR_BACK = {
+  light: "#f4f7f2",
+  dark: "#0f1412",
+} as const;
+
+function StaticFooterGradient({ isDark }: { isDark: boolean }) {
   return (
     <div
       className="w-full h-[560px]"
       style={{
-        background:
-          "linear-gradient(135deg, #FFF0D9 0%, #a8e8dc 45%, #7AE2CF 100%)",
+        background: isDark
+          ? "linear-gradient(135deg, #3d3428 0%, #1a3d38 45%, #0f1412 100%)"
+          : "linear-gradient(135deg, #FFF0D9 0%, #a8e8dc 45%, #7AE2CF 100%)",
       }}
     />
   );
@@ -24,6 +32,9 @@ function StaticFooterGradient() {
 export default function Footer2() {
   const footerRef = useRef<HTMLDivElement>(null);
   const [showShader, setShowShader] = useState(false);
+  const { theme, mounted } = useTheme();
+  const isDark = mounted ? theme === "dark" : false;
+  const colorBack = isDark ? COLOR_BACK.dark : COLOR_BACK.light;
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -57,12 +68,13 @@ export default function Footer2() {
           © 2026 Aniket Dhakane
         </p>
       </div>
-      <div className="w-full h-[580px] absolute z-40 bg-white/40 md:backdrop-blur-sm" />
+      <div className="w-full h-[580px] absolute z-40 bg-[var(--footer-veil)] md:backdrop-blur-sm transition-[background-color] duration-300" />
       {showShader ? (
         <GrainGradient
+          key={colorBack}
           className="w-full h-[560px]"
           colors={["#FFF0D9", "#7AE2CF"]}
-          colorBack="#f4f7f2"
+          colorBack={colorBack}
           softness={0.7}
           intensity={0.04}
           noise={0.25}
@@ -70,7 +82,7 @@ export default function Footer2() {
           speed={0.5}
         />
       ) : (
-        <StaticFooterGradient />
+        <StaticFooterGradient isDark={isDark} />
       )}
     </div>
   );
