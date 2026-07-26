@@ -4,6 +4,7 @@ import { Hero } from "./components/Hero";
 import { Socials } from "./components/Socials";
 import { FadeInSection } from "./components/FadeInSection";
 
+const LastFmWidget = dynamic(() => import("./components/LastFmWidget"));
 const GitHubStats = dynamic(() => import("./components/GitHubStats"));
 const Experience = dynamic(() => import("./components/Experience"));
 const SkillsAndCertifications = dynamic(
@@ -20,6 +21,7 @@ export default function Home() {
       <div className="w-screen p-4 md:p-2 md:w-2xl flex flex-col">
         <Navbar />
         <Hero />
+        <LastFmWidget />
         <Socials />
 
         <FadeInSection>
