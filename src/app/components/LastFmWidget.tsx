@@ -1,11 +1,27 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { m, useReducedMotion } from "motion/react";
 
 const LASTFM_USER = "hisukurifu";
+const LASTFM_PROFILE = `https://www.last.fm/user/${LASTFM_USER}`;
 // Public read-only Last.fm API key (no secret needed for user.getRecentTracks)
 const LASTFM_API_KEY = "c4f5c08a6dd62e05bf9e4b388b9bb70d";
 const POLL_MS = 45_000;
+
+function PinIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="h-3 w-3 shrink-0"
+      aria-hidden
+    >
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+    </svg>
+  );
+}
 
 type Track = {
   name: string;
@@ -60,7 +76,7 @@ function parseTrack(data: RecentTracksResponse): Track | null {
     name: raw.name,
     artist: raw.artist?.["#text"] || raw.artist?.name || "Unknown artist",
     album: raw.album?.["#text"] || "",
-    url: raw.url || `https://www.last.fm/user/${LASTFM_USER}`,
+    url: raw.url || LASTFM_PROFILE,
     image: pickImage(raw.image),
     nowPlaying,
     // Now-playing entries omit date; only last-played scrobbles have uts
@@ -96,6 +112,32 @@ export default function LastFmWidget() {
   );
   // Tick so relative "Xm ago" labels stay fresh without another API call
   const [nowMs, setNowMs] = useState(() => Date.now());
+  const [hovered, setHovered] = useState(false);
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const openPin = useCallback(() => {
+    if (leaveTimer.current) {
+      clearTimeout(leaveTimer.current);
+      leaveTimer.current = null;
+    }
+    setHovered(true);
+  }, []);
+
+  const scheduleClosePin = useCallback(() => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    // Grace period so the cursor can reach the pin without it vanishing
+    leaveTimer.current = setTimeout(() => {
+      setHovered(false);
+      leaveTimer.current = null;
+    }, 450);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (leaveTimer.current) clearTimeout(leaveTimer.current);
+    };
+  }, []);
 
   const fetchTrack = useCallback(async (signal?: AbortSignal) => {
     try {
@@ -146,8 +188,55 @@ export default function LastFmWidget() {
   }, [track]);
 
   return (
-    <div className="my-4 max-w-80">
-      <h1 className="text-md font-bold">Listening</h1>
+    <m.div
+      className="my-4 max-w-80 relative"
+      onHoverStart={openPin}
+      onHoverEnd={scheduleClosePin}
+      onFocusCapture={openPin}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          scheduleClosePin();
+        }
+      }}
+    >
+      <div className="flex items-center gap-2">
+        <h1 className="text-md font-bold">Listening</h1>
+
+        {/* Always-visible pin; username expands on hover. Stays open with leave delay. */}
+        <m.a
+          href={LASTFM_PROFILE}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Last.fm profile: ${LASTFM_USER}`}
+          onHoverStart={openPin}
+          onHoverEnd={scheduleClosePin}
+          initial={false}
+          animate={
+            prefersReducedMotion
+              ? {}
+              : { scale: hovered ? 1.04 : 1 }
+          }
+          whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
+          transition={{ type: "spring", duration: 0.3, bounce: 0 }}
+          className="inline-flex max-w-full items-center gap-1 rounded-full border border-[var(--border)] bg-[var(--card)] py-0.5 pl-1.5 pr-1.5 text-[11px] font-medium text-[var(--accent-blue)] shadow-sm transition-[padding,background-color] duration-200 ease-out hover:bg-[var(--surface-hover)] hover:underline"
+          style={{
+            paddingRight: hovered ? 8 : 6,
+          }}
+        >
+          <span className="text-[var(--accent-sage)]">
+            <PinIcon />
+          </span>
+          <span
+            className={`overflow-hidden whitespace-nowrap transition-[max-width,opacity,filter] duration-300 ease-[cubic-bezier(0.2,0,0,1)] ${
+              hovered
+                ? "max-w-[9rem] opacity-100 blur-0"
+                : "max-w-0 opacity-0 blur-[4px]"
+            }`}
+          >
+            {LASTFM_USER}
+          </span>
+        </m.a>
+      </div>
 
       {status === "loading" && (
         <div className="mt-2 flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3">
@@ -163,7 +252,7 @@ export default function LastFmWidget() {
         <p className="mt-2 text-sm text-[var(--text-muted)]">
           Couldn&apos;t load Last.fm right now.{" "}
           <a
-            href={`https://www.last.fm/user/${LASTFM_USER}`}
+            href={LASTFM_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--accent-blue)] hover:underline"
@@ -233,6 +322,6 @@ export default function LastFmWidget() {
           </div>
         </a>
       )}
-    </div>
+    </m.div>
   );
 }
