@@ -4,12 +4,16 @@ import ExperienceCard from "./ui-components/ExperienceCard";
 import { m } from "motion/react";
 
 export default function Experience() {
+  // Inset cards so hover scale has room (page overflow-x + content-visibility clip paint).
+  const cardFrame = "px-2 py-1.5";
+
   return (
     <div className="pb-8">
       <h1 className="text-md font-bold pb-2">Experience</h1>
 
-      <div className="flex flex-col gap-3.5">
+      <div className="flex flex-col gap-2">
         <m.div
+          className={cardFrame}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -25,6 +29,7 @@ export default function Experience() {
         </m.div>
 
         <m.div
+          className={cardFrame}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -46,6 +51,7 @@ export default function Experience() {
 
       <h2 className="text-md font-bold py-2">Freelance Experience</h2>
       <m.div
+        className={cardFrame}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

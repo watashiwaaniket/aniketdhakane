@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { m, useReducedMotion } from "motion/react";
 
 export interface ExperienceCardProps {
   title: string;
@@ -12,6 +13,8 @@ export interface ExperienceCardProps {
   link?: string;
   visualSide?: "left" | "right";
 }
+
+const hoverTransition = { duration: 0.3 };
 
 export default function ExperienceCard({
   title,
@@ -24,6 +27,7 @@ export default function ExperienceCard({
 }: ExperienceCardProps) {
   const isVisualRight = visualSide === "right";
   const isClickable = Boolean(link);
+  const prefersReducedMotion = useReducedMotion();
 
   const visualBox = image ? (
     <div
@@ -42,7 +46,7 @@ export default function ExperienceCard({
   ) : null;
 
   const detailsBox = (
-    <div className="flex-1 rounded-2xl p-4 md:p-5">
+    <div className="relative z-10 flex-1 rounded-2xl p-4 md:p-5">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           <h1 className="font-semibold text-lg tracking-tight text-balance text-[var(--foreground)]">
@@ -63,43 +67,74 @@ export default function ExperienceCard({
     </div>
   );
 
-  const body: ReactNode = (
-    <div className="flex flex-col md:flex-row gap-4 items-start">
-      {isVisualRight ? (
-        <>
-          <div className="order-2 md:order-1 flex-1">{detailsBox}</div>
-          <div className="order-1 md:order-2 w-full md:w-auto">{visualBox}</div>
-        </>
-      ) : (
-        <>
-          <div className="order-1 md:order-1 w-full md:w-auto">{visualBox}</div>
-          <div className="order-2 md:order-2 flex-1">{detailsBox}</div>
-        </>
-      )}
-    </div>
+  const sageGlow = (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[140%] opacity-25 transition-opacity duration-300 ease-out group-hover:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:opacity-25"
+      style={{
+        background:
+          "radial-gradient(ellipse 95% 90% at 50% 100%, color-mix(in srgb, var(--accent-sage) 58%, transparent) 0%, color-mix(in srgb, var(--accent-sage) 28%, transparent) 38%, color-mix(in srgb, var(--accent-sage) 10%, transparent) 62%, transparent 78%)",
+      }}
+    />
   );
 
+  const body: ReactNode = (
+    <>
+      {sageGlow}
+      <div className="relative z-10 flex flex-col md:flex-row gap-4 items-start">
+        {isVisualRight ? (
+          <>
+            <div className="order-2 md:order-1 flex-1">{detailsBox}</div>
+            <div className="order-1 md:order-2 w-full md:w-auto">{visualBox}</div>
+          </>
+        ) : (
+          <>
+            <div className="order-1 md:order-1 w-full md:w-auto">{visualBox}</div>
+            <div className="order-2 md:order-2 flex-1">{detailsBox}</div>
+          </>
+        )}
+      </div>
+    </>
+  );
+
+  // Match Socials: Motion whileHover/whileTap instead of CSS scale transitions
+  const motionProps = prefersReducedMotion
+    ? {}
+    : {
+        whileHover: { scale: 1.02 },
+        whileTap: isClickable
+          ? { scale: 0.98, transition: { duration: 0.1 } }
+          : undefined,
+        transition: hoverTransition,
+      };
+
   const className = [
-    "block bg-[var(--card)] border-1 border-[var(--border)] rounded-xl overflow-hidden",
-    isClickable &&
-      "cursor-pointer transition-[border-color,box-shadow] hover:border-[var(--accent-blue)] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_4px_12px_rgba(0,0,0,0.04)] active:scale-[0.99]",
+    "group relative block origin-center overflow-hidden rounded-xl border-1 border-[var(--border)] bg-[var(--card)]",
+    isClickable
+      ? "cursor-pointer transition-[border-color,box-shadow] duration-300 ease-out hover:border-[color-mix(in_srgb,var(--accent-sage)_45%,var(--border))] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_color-mix(in_srgb,var(--accent-sage)_18%,transparent)]"
+      : "cursor-default",
   ]
     .filter(Boolean)
     .join(" ");
 
   if (link) {
     return (
-      <a
+      <m.a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
         className={className}
         aria-label={`Open ${title}`}
+        {...motionProps}
       >
         {body}
-      </a>
+      </m.a>
     );
   }
 
-  return <div className={className}>{body}</div>;
+  return (
+    <m.div className={className} {...motionProps}>
+      {body}
+    </m.div>
+  );
 }
