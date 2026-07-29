@@ -1,0 +1,310 @@
+/* Apple Notes–style surface for /projects only (imported by projects layout). */
+
+.projects-notes {
+  color-scheme: light;
+
+  --notes-sidebar: #f5f5f7;
+  --notes-app-bg: #f5f5f7;
+  --notes-surface: #ffffff;
+  --notes-text: #1d1d1f;
+  --notes-muted: #86868b;
+  --notes-divider: rgba(0, 0, 0, 0.06);
+  --notes-hover: rgba(0, 0, 0, 0.04);
+  --notes-selection: #fff3b0;
+  --notes-selection-text: #1d1d1f;
+  --notes-accent: #007aff;
+  --notes-input-bg: #ffffff;
+  --notes-toolbar-bg: #f5f5f7;
+  --notes-toolbar-divider: rgba(0, 0, 0, 0.08);
+  --notes-search-border: rgba(0, 0, 0, 0.08);
+  --notes-prose-secondary: #515154;
+  --notes-blockquote-border: #d1d1d6;
+  --notes-toggle-track: #e5e5ea;
+  --notes-toggle-thumb: #ffffff;
+  --notes-toggle-icon: #8e8e93;
+  --notes-menu-bg: #ffffff;
+  --notes-toast-bg: rgba(29, 29, 31, 0.92);
+  --notes-toast-text: #ffffff;
+  --notes-shadow-ring: rgba(0, 0, 0, 0.06);
+  --notes-shadow-sm: rgba(0, 0, 0, 0.04);
+  --notes-shadow-md: rgba(0, 0, 0, 0.06);
+  --notes-shadow-lg: rgba(0, 0, 0, 0.1);
+  --notes-canvas-a: #e8e4df;
+  --notes-canvas-b: #dce8f3;
+  --notes-canvas-c: #ebebed;
+  --notes-scrim: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(255, 255, 255, 0.62) 45%,
+    rgba(255, 255, 255, 0.72) 100%
+  );
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="dark"] .projects-notes {
+  color-scheme: dark;
+
+  --notes-sidebar: #1c1c1e;
+  --notes-app-bg: #1c1c1e;
+  --notes-surface: #1e1e1e;
+  --notes-text: #f5f5f7;
+  --notes-muted: #98989d;
+  --notes-divider: rgba(255, 255, 255, 0.06);
+  --notes-hover: rgba(255, 255, 255, 0.05);
+  --notes-selection: #6e632b;
+  --notes-selection-text: #f5f5f7;
+  --notes-accent: #0a84ff;
+  --notes-input-bg: #2c2c2e;
+  --notes-toolbar-bg: #2c2c2e;
+  --notes-toolbar-divider: rgba(255, 255, 255, 0.08);
+  --notes-search-border: transparent;
+  --notes-prose-secondary: #aeaeb2;
+  --notes-blockquote-border: #48484a;
+  --notes-toggle-track: #39393d;
+  --notes-toggle-thumb: #f5f5f7;
+  --notes-toggle-icon: #1c1c1e;
+  --notes-menu-bg: #2c2c2e;
+  --notes-toast-bg: rgba(242, 242, 247, 0.92);
+  --notes-toast-text: #1d1d1f;
+  --notes-shadow-ring: transparent;
+  --notes-shadow-sm: rgba(0, 0, 0, 0.3);
+  --notes-shadow-md: rgba(0, 0, 0, 0.45);
+  --notes-shadow-lg: rgba(0, 0, 0, 0.6);
+  --notes-canvas-a: #0a0a0a;
+  --notes-canvas-b: #12141a;
+  --notes-canvas-c: #0a0a0a;
+  --notes-scrim: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+.projects-notes .notes-sidebar-bg {
+  background-color: var(--notes-sidebar);
+}
+
+.projects-notes .notes-app-bg {
+  background-color: var(--notes-app-bg);
+}
+
+.projects-notes .notes-surface-bg {
+  background-color: var(--notes-surface);
+}
+
+.projects-notes .notes-text {
+  color: var(--notes-text);
+}
+
+.projects-notes .notes-muted {
+  color: var(--notes-muted);
+}
+
+.projects-notes .notes-border-b {
+  border-bottom: 1px solid var(--notes-divider);
+}
+
+.projects-notes .notes-border-r {
+  border-right: 1px solid var(--notes-divider);
+}
+
+.projects-notes .notes-search-input {
+  background-color: var(--notes-input-bg);
+  border: 1px solid var(--notes-search-border);
+  color: var(--notes-text);
+}
+
+.projects-notes .notes-search-input::placeholder {
+  color: var(--notes-muted);
+}
+
+.projects-notes .notes-search-input:focus {
+  border-color: color-mix(in srgb, var(--notes-accent) 40%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--notes-accent) 12%, transparent);
+  outline: none;
+}
+
+.projects-notes .notes-list-item {
+  color: var(--notes-text);
+}
+
+.projects-notes .notes-list-item:hover {
+  background-color: var(--notes-hover);
+}
+
+.projects-notes .notes-list-item-active {
+  background-color: var(--notes-selection);
+  color: var(--notes-selection-text);
+}
+
+.projects-notes .notes-list-item-active .notes-muted {
+  color: color-mix(in srgb, var(--notes-selection-text) 72%, transparent);
+}
+
+.projects-notes .notes-toolbar {
+  background-color: var(--notes-toolbar-bg);
+  box-shadow: inset 0 0 0 1px var(--notes-divider);
+}
+
+.projects-notes .notes-toolbar-btn {
+  color: var(--notes-text);
+}
+
+.projects-notes .notes-toolbar-btn:hover {
+  background-color: var(--notes-hover);
+}
+
+.projects-notes .notes-toolbar-divider {
+  background-color: var(--notes-toolbar-divider);
+}
+
+.projects-notes .notes-chip {
+  background-color: var(--notes-hover);
+  color: var(--notes-muted);
+}
+
+.projects-notes .theme-toggle {
+  background-color: var(--notes-toggle-track);
+  transition:
+    background-color 200ms ease-out,
+    transform 150ms ease-out;
+}
+
+.projects-notes .theme-toggle::before {
+  content: "";
+  position: absolute;
+  inset: -4.5px -4px;
+  border-radius: inherit;
+}
+
+.projects-notes .theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.projects-notes .theme-toggle-thumb {
+  background-color: var(--notes-toggle-thumb);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+  transition: transform 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.projects-notes .theme-toggle-icon {
+  transition:
+    opacity 300ms cubic-bezier(0.2, 0, 0, 1),
+    transform 300ms cubic-bezier(0.2, 0, 0, 1),
+    filter 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.projects-notes .theme-toggle-icon-static {
+  transition: none;
+}
+
+.projects-notes .prose-notes {
+  color: var(--notes-text);
+  font-size: 17px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.projects-notes .prose-notes > * + * {
+  margin-top: 1.25em;
+}
+
+.projects-notes .prose-notes h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.75em;
+  text-wrap: balance;
+}
+
+.projects-notes .prose-notes h3 {
+  font-size: 1.15em;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 1.5em;
+}
+
+.projects-notes .prose-notes p {
+  color: var(--notes-text);
+}
+
+.projects-notes .prose-notes strong {
+  font-weight: 600;
+}
+
+.projects-notes .prose-notes ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+
+.projects-notes .prose-notes ul {
+  list-style: disc;
+  padding-left: 1.4em;
+}
+
+.projects-notes .prose-notes li + li {
+  margin-top: 0.4em;
+}
+
+.projects-notes .prose-notes blockquote {
+  border-left: 3px solid var(--notes-blockquote-border);
+  color: var(--notes-prose-secondary);
+  font-style: italic;
+  padding-left: 1em;
+}
+
+.projects-notes .prose-notes a {
+  color: var(--notes-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.projects-notes .prose-notes code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  background: var(--notes-hover);
+  padding: 0.12em 0.35em;
+  border-radius: 0.35em;
+}
+
+@media (max-width: 767px) {
+  .projects-notes .notes-app {
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .projects-notes .notes-app {
+    box-shadow:
+      0 0 0 1px var(--notes-shadow-ring),
+      0 2px 4px var(--notes-shadow-sm),
+      0 8px 20px var(--notes-shadow-md),
+      0 24px 56px var(--notes-shadow-lg);
+  }
+}
+
+.projects-notes .notes-background-layer {
+  background-color: var(--notes-canvas-a);
+  background-image: linear-gradient(
+    145deg,
+    var(--notes-canvas-a) 0%,
+    var(--notes-canvas-b) 42%,
+    var(--notes-canvas-c) 100%
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.projects-notes .notes-background-scrim {
+  background: var(--notes-scrim);
+}
