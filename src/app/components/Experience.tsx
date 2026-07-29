@@ -56,6 +56,7 @@ export default function Experience() {
           role="Mobile App Dev"
           timeFrom="Feb 2025"
           timeTo="June 2025"
+          link="https://apps.apple.com/in/app/myotrek/id6747103153"
           visualSide="right"
         />
       </m.div>
