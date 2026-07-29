@@ -16,7 +16,14 @@ export function ProjectListItem({ project, isActive }: ProjectListItemProps) {
       }`}
     >
       <div className="flex items-baseline justify-between gap-2">
-        <h3 className="truncate text-[15px] font-semibold">{project.title}</h3>
+        <div className="flex min-w-0 items-center gap-1.5">
+          <h3 className="truncate text-[15px] font-semibold">{project.title}</h3>
+          {project.featured && (
+            <span className="notes-chip shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--notes-accent)]">
+              Featured
+            </span>
+          )}
+        </div>
         <time
           dateTime={project.date}
           className="notes-muted shrink-0 text-[13px] tabular-nums"

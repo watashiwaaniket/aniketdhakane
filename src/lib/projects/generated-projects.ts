@@ -4,11 +4,29 @@ import type { Project } from "./project-types";
 
 export const projects: Project[] = [
   {
+    "slug": "lfm",
+    "title": "lfm",
+    "date": "2026-07-26",
+    "category": "Misc",
+    "status": "Live",
+    "featured": true,
+    "link": "https://lfm.aniketdhakane.xyz/",
+    "stack": [
+      "Go",
+      "macOS",
+      "Last.fm",
+      "Discord"
+    ],
+    "preview": "lfm (linkFM) is a tiny local macOS daemon that watches what you’re playing in Apple Music, scrobbles it correctly to Las…",
+    "content": "**lfm** (linkFM) is a tiny local macOS daemon that watches what you’re playing in Apple Music, scrobbles it correctly to Last.fm, and optionally mirrors it on Discord Rich Presence.\n\nSite: [lfm.aniketdhakane.xyz](https://lfm.aniketdhakane.xyz/) · Source: [github.com/watashiwaaniket/lfm](https://github.com/watashiwaaniket/lfm)\n\n## Why it exists\n\nI wanted scrobbling that respects Last.fm’s rules — no audio sniffing, no double-counts when you pause — and a single static binary I can install once and forget.\n\n## What it does\n\n- **Apple Music → Last.fm** via AppleScript + the official Last.fm API\n- **True scrobble rules**: track longer than 30s, then 50% played or 4 minutes\n- **Pause-aware timing**: wall-clock only while Music is actually playing\n- **Discord Rich Presence** (optional): track, artist, album art while you listen\n- **LaunchAgent**: `lfm install` starts at login; logs under `~/Library/Logs/lfm`\n\n## Architecture\n\n```\nlfm/\n├── apps/cli   # Go daemon (scrobbler + Discord RPC + launchd)\n└── apps/web   # Product landing → Cloudflare Workers\n```\n\nOne process handles both scrobbling and Discord presence. Prefer either LaunchAgent **or** `lfm run`, not both.\n\n## Install (short version)\n\n```bash\ngit clone https://github.com/watashiwaaniket/lfm.git\ncd lfm/apps/cli\ngo build -o lfm .\nlfm auth       # browser auth → session key\nlfm run        # foreground\n# or\nlfm install    # LaunchAgent background\n```\n\n## Takeaway\n\nA small systems-ish product: correct APIs, a boring reliable daemon, and a clean marketing surface for people who actually listen."
+  },
+  {
     "slug": "wiredraw",
     "title": "wiredraw",
     "date": "2025-06-01",
     "category": "Frontend",
     "status": "WIP",
+    "featured": false,
     "link": "https://wiredraw.vercel.app/",
     "stack": [
       "Canvas",
@@ -24,6 +42,7 @@ export const projects: Project[] = [
     "date": "2025-04-12",
     "category": "Fullstack",
     "status": "Live",
+    "featured": false,
     "link": "https://personai-rho.vercel.app/",
     "stack": [
       "Next.js",
@@ -39,6 +58,7 @@ export const projects: Project[] = [
     "date": "2025-02-18",
     "category": "Fullstack",
     "status": "Live",
+    "featured": false,
     "link": "https://osaplfm.vercel.app/",
     "stack": [
       "Next.js",
@@ -53,6 +73,7 @@ export const projects: Project[] = [
     "date": "2025-01-08",
     "category": "Misc",
     "status": "Experiment",
+    "featured": false,
     "link": null,
     "stack": [
       "AI",
@@ -67,6 +88,7 @@ export const projects: Project[] = [
     "date": "2024-11-05",
     "category": "Fullstack",
     "status": "Client",
+    "featured": false,
     "link": "https://auraprotech.vercel.app/",
     "stack": [
       "Next.js",
@@ -81,6 +103,7 @@ export const projects: Project[] = [
     "date": "2024-09-20",
     "category": "Fullstack",
     "status": "Client",
+    "featured": false,
     "link": "https://preview-alphatechsolutions.vercel.app/",
     "stack": [
       "Next.js",

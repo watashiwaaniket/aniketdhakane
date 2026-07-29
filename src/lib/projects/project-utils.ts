@@ -13,16 +13,24 @@ export function buildPreview(content: string): string {
 }
 
 export function groupProjectsByCategory(projects: Project[]): ProjectGroup[] {
+  const ordered: ProjectGroup[] = [];
+
+  const featured = projects.filter((project) => project.featured);
+  if (featured.length > 0) {
+    ordered.push({ label: "Featured", projects: featured });
+  }
+
   const byCategory = new Map<string, Project[]>();
 
   for (const project of projects) {
+    // Featured also appears in its category so the list stays complete
+    // without burying it only at the top — skip duplicates in categories.
+    if (project.featured) continue;
     const label = project.category || "Other";
     const existing = byCategory.get(label) ?? [];
     existing.push(project);
     byCategory.set(label, existing);
   }
-
-  const ordered: ProjectGroup[] = [];
 
   for (const label of CATEGORY_ORDER) {
     const items = byCategory.get(label);

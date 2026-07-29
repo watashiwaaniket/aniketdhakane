@@ -46,6 +46,11 @@ export function ProjectDetail({
                 {project.title}
               </h1>
               <div className="mt-2 flex flex-wrap items-center gap-2">
+                {project.featured && (
+                  <span className="notes-chip rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-[var(--notes-accent)]">
+                    Featured
+                  </span>
+                )}
                 <span className="notes-chip rounded-full px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide">
                   {project.status}
                 </span>

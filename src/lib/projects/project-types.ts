@@ -4,6 +4,7 @@ export type Project = {
   date: string;
   category: string;
   status: string;
+  featured: boolean;
   link: string | null;
   stack: string[];
   preview: string;
