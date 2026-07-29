@@ -13,7 +13,7 @@ const GrainGradient = dynamic(
 /** Matches page --background so the shader base blends with the site */
 const COLOR_BACK = {
   light: "#f4f7f2",
-  dark: "#0f1412",
+  dark: "#000",
 } as const;
 
 function StaticFooterGradient({ isDark }: { isDark: boolean }) {

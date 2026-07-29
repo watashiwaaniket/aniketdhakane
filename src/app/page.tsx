@@ -10,9 +10,6 @@ const Experience = dynamic(() => import("./components/Experience"));
 const SkillsAndCertifications = dynamic(
   () => import("./components/SkillsAndCertifications")
 );
-const Projects = dynamic(() =>
-  import("./components/Projects").then((mod) => ({ default: mod.Projects }))
-);
 const Footer2 = dynamic(() => import("./components/Footer2"));
 
 export default function Home() {
@@ -34,10 +31,6 @@ export default function Home() {
 
         <FadeInSection y={35} duration={0.75}>
           <SkillsAndCertifications />
-        </FadeInSection>
-
-        <FadeInSection y={50} duration={0.85}>
-          <Projects />
         </FadeInSection>
       </div>
 

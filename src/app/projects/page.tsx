@@ -1,0 +1,25 @@
+import Link from "next/link";
+
+export default function ProjectsPage() {
+  return (
+    <section className="relative flex min-h-screen w-screen items-center justify-center bg-[var(--background)]">
+      <Link
+        href="/"
+        className="absolute top-6 left-6 z-10 rounded-full p-2 text-[var(--foreground)] transition-[background-color] duration-200 ease-out hover:bg-[var(--surface-hover)]"
+        aria-label="Back to home"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden
+        >
+          <path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42a.996.996 0 0 0-1.41 0l-6.59 6.59a.996.996 0 0 0 0 1.41l6.59 6.59a.996.996 0 1 0 1.41-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1" />
+        </svg>
+      </Link>
+      <p className="z-10 text-[var(--text-muted)]">coming soon...</p>
+    </section>
+  );
+}

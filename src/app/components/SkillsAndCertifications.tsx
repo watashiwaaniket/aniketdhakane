@@ -34,21 +34,6 @@ export default function SkillsAndCertifications() {
     GitIcon,
     FigmaIcon,
   ];
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  // Enter only — keep scale out of this so whileHover can match Socials cleanly
-  const itemVariants = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0 },
-  };
 
   return (
     <div className="my-6">
@@ -58,37 +43,23 @@ export default function SkillsAndCertifications() {
         Inset + overflow-visible so scale(1.2) has room (content-visibility /
         page overflow-x otherwise clip edge icons).
       */}
-      <m.div
-        className="flex flex-wrap gap-x-3 gap-y-3 overflow-visible px-2 py-2"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
+      <div className="flex flex-wrap gap-x-3 gap-y-3 overflow-visible px-2 py-2">
         {icons.map((Icon, index) => (
           <m.div
             key={index}
-            variants={prefersReducedMotion ? undefined : itemVariants}
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.2 }}
+            whileTap={
+              prefersReducedMotion
+                ? undefined
+                : { scale: 0.8, transition: { duration: 0.1 } }
+            }
+            transition={{ duration: 0.3 }}
             className="origin-center overflow-visible"
           >
-            {/* Same hover/tap as Socials — isolated from enter variants */}
-            <m.div
-              whileHover={
-                prefersReducedMotion ? undefined : { scale: 1.2 }
-              }
-              whileTap={
-                prefersReducedMotion
-                  ? undefined
-                  : { scale: 0.8, transition: { duration: 0.1 } }
-              }
-              transition={{ duration: 0.3 }}
-              className="origin-center"
-            >
-              <Icon />
-            </m.div>
+            <Icon />
           </m.div>
         ))}
-      </m.div>
+      </div>
 
       <h2 className="text-sm font-semibold mt-5 mb-2">Certifications</h2>
       {/* Inset so Motion hover scale has room (same as Experience cards) */}
