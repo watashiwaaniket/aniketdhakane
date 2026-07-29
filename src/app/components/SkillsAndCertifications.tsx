@@ -44,17 +44,22 @@ export default function SkillsAndCertifications() {
     },
   };
 
+  // Enter only — keep scale out of this so whileHover can match Socials cleanly
   const itemVariants = {
-    hidden: { opacity: 0, y: 18, scale: 0.96 },
-    show: { opacity: 1, y: 0, scale: 1 },
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0 },
   };
 
   return (
     <div className="my-6">
       <h1 className="text-md font-bold">Skills and Certifications</h1>
 
+      {/*
+        Inset + overflow-visible so scale(1.2) has room (content-visibility /
+        page overflow-x otherwise clip edge icons).
+      */}
       <m.div
-        className="flex space-x-3 space-y-3 py-1 flex-wrap"
+        className="flex flex-wrap gap-x-3 gap-y-3 overflow-visible px-2 py-2"
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
@@ -64,25 +69,39 @@ export default function SkillsAndCertifications() {
           <m.div
             key={index}
             variants={prefersReducedMotion ? undefined : itemVariants}
-            whileHover={prefersReducedMotion ? undefined : { scale: 1.15 }}
-            whileTap={prefersReducedMotion ? undefined : { scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="max-md:transform-none"
+            className="origin-center overflow-visible"
           >
-            <Icon />
+            {/* Same hover/tap as Socials — isolated from enter variants */}
+            <m.div
+              whileHover={
+                prefersReducedMotion ? undefined : { scale: 1.2 }
+              }
+              whileTap={
+                prefersReducedMotion
+                  ? undefined
+                  : { scale: 0.8, transition: { duration: 0.1 } }
+              }
+              transition={{ duration: 0.3 }}
+              className="origin-center"
+            >
+              <Icon />
+            </m.div>
           </m.div>
         ))}
       </m.div>
 
       <h2 className="text-sm font-semibold mt-5 mb-2">Certifications</h2>
-      <CertificationCard
-        title="Claude Certified Architect — Foundations (CCA-F)"
-        issuer="Anthropic"
-        issued="Jun 2026"
-        expires="Dec 2026"
-        credentialId="h5phb8iwbwrw"
-        verifyUrl="https://verify.skilljar.com/c/h5phb8iwbwrw"
-      />
+      {/* Inset so Motion hover scale has room (same as Experience cards) */}
+      <div className="px-2 py-1.5">
+        <CertificationCard
+          title="Claude Certified Architect — Foundations (CCA-F)"
+          issuer="Anthropic"
+          issued="Jun 2026"
+          expires="Dec 2026"
+          credentialId="h5phb8iwbwrw"
+          verifyUrl="https://verify.skilljar.com/c/h5phb8iwbwrw"
+        />
+      </div>
     </div>
   );
 }

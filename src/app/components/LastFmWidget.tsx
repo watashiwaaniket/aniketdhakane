@@ -263,11 +263,18 @@ export default function LastFmWidget() {
       )}
 
       {track && (
-        <a
+        <m.a
           href={track.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 flex items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 transition-[background-color] duration-200 hover:bg-[var(--surface-hover)]"
+          className="mt-2 flex origin-center items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 transition-[background-color,border-color,box-shadow] duration-300 ease-out hover:bg-[var(--surface-hover)] hover:border-[color-mix(in_srgb,var(--accent-sage)_45%,var(--border))] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_color-mix(in_srgb,var(--accent-sage)_12%,transparent)]"
+          {...(prefersReducedMotion
+            ? {}
+            : {
+                whileHover: { scale: 1.02 },
+                whileTap: { scale: 0.98, transition: { duration: 0.1 } },
+                transition: { duration: 0.3 },
+              })}
         >
           <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-muted)]">
             {track.image ? (
@@ -320,7 +327,7 @@ export default function LastFmWidget() {
               {track.album ? ` · ${track.album}` : ""}
             </p>
           </div>
-        </a>
+        </m.a>
       )}
     </m.div>
   );
