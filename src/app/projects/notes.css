@@ -3,16 +3,16 @@
 .projects-notes {
   color-scheme: light;
 
-  /* Liquid glass surfaces */
-  --glass-fill: rgba(255, 255, 255, 0.063);
-  --glass-fill-strong: rgba(255, 255, 255, 0.12);
-  --glass-fill-soft: rgba(255, 255, 255, 0.05);
-  --glass-stroke: rgba(255, 255, 255, 0.32);
-  --glass-stroke-soft: rgba(255, 255, 255, 0.16);
+  /* Liquid glass — light mode: milky / bright frost */
+  --glass-fill: rgba(255, 255, 255, 0.42);
+  --glass-fill-strong: rgba(255, 255, 255, 0.55);
+  --glass-fill-soft: rgba(255, 255, 255, 0.28);
+  --glass-stroke: rgba(255, 255, 255, 0.55);
+  --glass-stroke-soft: rgba(255, 255, 255, 0.35);
   --glass-highlight: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.14) 40%,
     rgba(255, 255, 255, 0) 70%
   );
   /* Figma liquid-glass multi-layer depth (as box-shadow so backdrop-filter works) */
@@ -22,29 +22,29 @@
     0 23px 14px rgba(0, 0, 0, 0.22),
     0 10px 10px rgba(0, 0, 0, 0.38),
     0 3px 6px rgba(0, 0, 0, 0.44);
-  --glass-blur: 28px;
-  --glass-saturate: 1.55;
+  --glass-blur: 32px;
+  --glass-saturate: 1.45;
 
   --notes-sidebar: transparent;
   --notes-app-bg: var(--glass-fill);
   --notes-surface: transparent;
   --notes-text: rgba(15, 18, 20, 0.92);
   --notes-muted: rgba(40, 48, 52, 0.62);
-  --notes-divider: rgba(255, 255, 255, 0.22);
-  --notes-hover: rgba(255, 255, 255, 0.14);
-  --notes-selection: rgba(255, 243, 176, 0.55);
+  --notes-divider: rgba(0, 0, 0, 0.08);
+  --notes-hover: rgba(255, 255, 255, 0.45);
+  --notes-selection: rgba(255, 243, 176, 0.65);
   --notes-selection-text: #1d1d1f;
   --notes-accent: #0066d6;
-  --notes-input-bg: rgba(255, 255, 255, 0.22);
-  --notes-toolbar-bg: rgba(255, 255, 255, 0.18);
-  --notes-toolbar-divider: rgba(0, 0, 0, 0.12);
-  --notes-search-border: rgba(255, 255, 255, 0.28);
+  --notes-input-bg: rgba(255, 255, 255, 0.5);
+  --notes-toolbar-bg: rgba(255, 255, 255, 0.42);
+  --notes-toolbar-divider: rgba(0, 0, 0, 0.1);
+  --notes-search-border: rgba(255, 255, 255, 0.55);
   --notes-prose-secondary: rgba(40, 48, 52, 0.72);
-  --notes-blockquote-border: rgba(0, 0, 0, 0.18);
-  --notes-toggle-track: rgba(255, 255, 255, 0.28);
+  --notes-blockquote-border: rgba(0, 0, 0, 0.16);
+  --notes-toggle-track: rgba(255, 255, 255, 0.45);
   --notes-toggle-thumb: #ffffff;
   --notes-toggle-icon: #5c6670;
-  --notes-menu-bg: rgba(255, 255, 255, 0.35);
+  --notes-menu-bg: rgba(255, 255, 255, 0.55);
   --notes-toast-bg: rgba(29, 29, 31, 0.88);
   --notes-toast-text: #ffffff;
   --notes-canvas-a: #e8e4df;
@@ -52,9 +52,9 @@
   --notes-canvas-c: #ebebed;
   --notes-scrim: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.04) 50%,
-    rgba(255, 255, 255, 0.1) 100%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.14) 100%
   );
 
   font-family:
@@ -67,44 +67,47 @@
 html[data-theme="dark"] .projects-notes {
   color-scheme: dark;
 
-  --glass-fill: rgba(20, 22, 26, 0.28);
-  --glass-fill-strong: rgba(255, 255, 255, 0.08);
-  --glass-fill-soft: rgba(255, 255, 255, 0.04);
-  --glass-stroke: rgba(255, 255, 255, 0.16);
+  /* Liquid glass — dark mode: deep / smoky frost */
+  --glass-fill: rgba(8, 10, 14, 0.58);
+  --glass-fill-strong: rgba(0, 0, 0, 0.45);
+  --glass-fill-soft: rgba(0, 0, 0, 0.32);
+  --glass-stroke: rgba(255, 255, 255, 0.12);
   --glass-stroke-soft: rgba(255, 255, 255, 0.08);
   --glass-highlight: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0.03) 42%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.02) 42%,
     rgba(255, 255, 255, 0) 72%
   );
   --glass-shadow:
-    0 63px 18px rgba(0, 0, 0, 0.06),
-    0 40px 16px rgba(0, 0, 0, 0.14),
-    0 23px 14px rgba(0, 0, 0, 0.28),
-    0 10px 10px rgba(0, 0, 0, 0.4),
-    0 3px 6px rgba(0, 0, 0, 0.48);
+    0 63px 18px rgba(0, 0, 0, 0.08),
+    0 40px 16px rgba(0, 0, 0, 0.18),
+    0 23px 14px rgba(0, 0, 0, 0.32),
+    0 10px 10px rgba(0, 0, 0, 0.45),
+    0 3px 6px rgba(0, 0, 0, 0.55);
+  --glass-blur: 34px;
+  --glass-saturate: 1.25;
 
   --notes-sidebar: transparent;
   --notes-app-bg: var(--glass-fill);
   --notes-surface: transparent;
   --notes-text: rgba(245, 247, 248, 0.94);
   --notes-muted: rgba(210, 218, 222, 0.68);
-  --notes-divider: rgba(255, 255, 255, 0.1);
+  --notes-divider: rgba(255, 255, 255, 0.08);
   --notes-hover: rgba(255, 255, 255, 0.08);
   --notes-selection: rgba(110, 99, 43, 0.55);
   --notes-selection-text: #f5f5f7;
   --notes-accent: #5eb0ff;
-  --notes-input-bg: rgba(0, 0, 0, 0.28);
-  --notes-toolbar-bg: rgba(255, 255, 255, 0.08);
-  --notes-toolbar-divider: rgba(255, 255, 255, 0.14);
+  --notes-input-bg: rgba(0, 0, 0, 0.42);
+  --notes-toolbar-bg: rgba(0, 0, 0, 0.35);
+  --notes-toolbar-divider: rgba(255, 255, 255, 0.12);
   --notes-search-border: rgba(255, 255, 255, 0.1);
   --notes-prose-secondary: rgba(210, 218, 222, 0.78);
-  --notes-blockquote-border: rgba(255, 255, 255, 0.22);
-  --notes-toggle-track: rgba(255, 255, 255, 0.14);
+  --notes-blockquote-border: rgba(255, 255, 255, 0.18);
+  --notes-toggle-track: rgba(0, 0, 0, 0.4);
   --notes-toggle-thumb: #f5f5f7;
   --notes-toggle-icon: #1c1c1e;
-  --notes-menu-bg: rgba(30, 32, 36, 0.55);
+  --notes-menu-bg: rgba(12, 14, 18, 0.72);
   --notes-toast-bg: rgba(242, 242, 247, 0.92);
   --notes-toast-text: #1d1d1f;
   --notes-canvas-a: #0a0a0a;
@@ -112,9 +115,9 @@ html[data-theme="dark"] .projects-notes {
   --notes-canvas-c: #0a0a0a;
   --notes-scrim: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.28) 0%,
-    rgba(0, 0, 0, 0.12) 50%,
-    rgba(0, 0, 0, 0.22) 100%
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.22) 50%,
+    rgba(0, 0, 0, 0.35) 100%
   );
 }
 
@@ -175,16 +178,18 @@ html[data-theme="dark"] .projects-notes {
 .projects-notes .notes-surface-bg {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    transparent 40%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.04) 45%,
+    transparent 100%
   );
 }
 
 html[data-theme="dark"] .projects-notes .notes-surface-bg {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.03) 0%,
-    transparent 40%
+    rgba(0, 0, 0, 0.22) 0%,
+    rgba(0, 0, 0, 0.08) 45%,
+    transparent 100%
   );
 }
 
@@ -420,12 +425,12 @@ html[data-theme="dark"] .projects-notes .notes-surface-bg {
 /* Prefer reduced transparency when user requests less motion/transparency */
 @media (prefers-reduced-transparency: reduce) {
   .projects-notes {
-    --glass-fill: rgba(255, 255, 255, 0.88);
+    --glass-fill: rgba(252, 253, 254, 0.94);
     --glass-blur: 0px;
   }
 
   html[data-theme="dark"] .projects-notes {
-    --glass-fill: rgba(28, 30, 32, 0.92);
+    --glass-fill: rgba(12, 14, 18, 0.96);
   }
 
   .projects-notes .notes-app.liquid-glass {
