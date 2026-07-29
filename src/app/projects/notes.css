@@ -1,42 +1,60 @@
-/* Apple Notes–style surface for /projects only (imported by projects layout). */
+/* Projects Notes — liquid glass UI (scoped to /projects). */
 
 .projects-notes {
   color-scheme: light;
 
-  --notes-sidebar: #f5f5f7;
-  --notes-app-bg: #f5f5f7;
-  --notes-surface: #ffffff;
-  --notes-text: #1d1d1f;
-  --notes-muted: #86868b;
-  --notes-divider: rgba(0, 0, 0, 0.06);
-  --notes-hover: rgba(0, 0, 0, 0.04);
-  --notes-selection: #fff3b0;
+  /* Liquid glass surfaces */
+  --glass-fill: rgba(255, 255, 255, 0.063);
+  --glass-fill-strong: rgba(255, 255, 255, 0.12);
+  --glass-fill-soft: rgba(255, 255, 255, 0.05);
+  --glass-stroke: rgba(255, 255, 255, 0.32);
+  --glass-stroke-soft: rgba(255, 255, 255, 0.16);
+  --glass-highlight: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  /* Figma liquid-glass multi-layer depth (as box-shadow so backdrop-filter works) */
+  --glass-shadow:
+    0 63px 18px rgba(0, 0, 0, 0.01),
+    0 40px 16px rgba(0, 0, 0, 0.07),
+    0 23px 14px rgba(0, 0, 0, 0.22),
+    0 10px 10px rgba(0, 0, 0, 0.38),
+    0 3px 6px rgba(0, 0, 0, 0.44);
+  --glass-blur: 28px;
+  --glass-saturate: 1.55;
+
+  --notes-sidebar: transparent;
+  --notes-app-bg: var(--glass-fill);
+  --notes-surface: transparent;
+  --notes-text: rgba(15, 18, 20, 0.92);
+  --notes-muted: rgba(40, 48, 52, 0.62);
+  --notes-divider: rgba(255, 255, 255, 0.22);
+  --notes-hover: rgba(255, 255, 255, 0.14);
+  --notes-selection: rgba(255, 243, 176, 0.55);
   --notes-selection-text: #1d1d1f;
-  --notes-accent: #007aff;
-  --notes-input-bg: #ffffff;
-  --notes-toolbar-bg: #f5f5f7;
-  --notes-toolbar-divider: rgba(0, 0, 0, 0.08);
-  --notes-search-border: rgba(0, 0, 0, 0.08);
-  --notes-prose-secondary: #515154;
-  --notes-blockquote-border: #d1d1d6;
-  --notes-toggle-track: #e5e5ea;
+  --notes-accent: #0066d6;
+  --notes-input-bg: rgba(255, 255, 255, 0.22);
+  --notes-toolbar-bg: rgba(255, 255, 255, 0.18);
+  --notes-toolbar-divider: rgba(0, 0, 0, 0.12);
+  --notes-search-border: rgba(255, 255, 255, 0.28);
+  --notes-prose-secondary: rgba(40, 48, 52, 0.72);
+  --notes-blockquote-border: rgba(0, 0, 0, 0.18);
+  --notes-toggle-track: rgba(255, 255, 255, 0.28);
   --notes-toggle-thumb: #ffffff;
-  --notes-toggle-icon: #8e8e93;
-  --notes-menu-bg: #ffffff;
-  --notes-toast-bg: rgba(29, 29, 31, 0.92);
+  --notes-toggle-icon: #5c6670;
+  --notes-menu-bg: rgba(255, 255, 255, 0.35);
+  --notes-toast-bg: rgba(29, 29, 31, 0.88);
   --notes-toast-text: #ffffff;
-  --notes-shadow-ring: rgba(0, 0, 0, 0.06);
-  --notes-shadow-sm: rgba(0, 0, 0, 0.04);
-  --notes-shadow-md: rgba(0, 0, 0, 0.06);
-  --notes-shadow-lg: rgba(0, 0, 0, 0.1);
   --notes-canvas-a: #e8e4df;
   --notes-canvas-b: #dce8f3;
   --notes-canvas-c: #ebebed;
   --notes-scrim: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.78) 0%,
-    rgba(255, 255, 255, 0.62) 45%,
-    rgba(255, 255, 255, 0.72) 100%
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.1) 100%
   );
 
   font-family:
@@ -49,53 +67,125 @@
 html[data-theme="dark"] .projects-notes {
   color-scheme: dark;
 
-  --notes-sidebar: #1c1c1e;
-  --notes-app-bg: #1c1c1e;
-  --notes-surface: #1e1e1e;
-  --notes-text: #f5f5f7;
-  --notes-muted: #98989d;
-  --notes-divider: rgba(255, 255, 255, 0.06);
-  --notes-hover: rgba(255, 255, 255, 0.05);
-  --notes-selection: #6e632b;
+  --glass-fill: rgba(20, 22, 26, 0.28);
+  --glass-fill-strong: rgba(255, 255, 255, 0.08);
+  --glass-fill-soft: rgba(255, 255, 255, 0.04);
+  --glass-stroke: rgba(255, 255, 255, 0.16);
+  --glass-stroke-soft: rgba(255, 255, 255, 0.08);
+  --glass-highlight: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 42%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  --glass-shadow:
+    0 63px 18px rgba(0, 0, 0, 0.06),
+    0 40px 16px rgba(0, 0, 0, 0.14),
+    0 23px 14px rgba(0, 0, 0, 0.28),
+    0 10px 10px rgba(0, 0, 0, 0.4),
+    0 3px 6px rgba(0, 0, 0, 0.48);
+
+  --notes-sidebar: transparent;
+  --notes-app-bg: var(--glass-fill);
+  --notes-surface: transparent;
+  --notes-text: rgba(245, 247, 248, 0.94);
+  --notes-muted: rgba(210, 218, 222, 0.68);
+  --notes-divider: rgba(255, 255, 255, 0.1);
+  --notes-hover: rgba(255, 255, 255, 0.08);
+  --notes-selection: rgba(110, 99, 43, 0.55);
   --notes-selection-text: #f5f5f7;
-  --notes-accent: #0a84ff;
-  --notes-input-bg: #2c2c2e;
-  --notes-toolbar-bg: #2c2c2e;
-  --notes-toolbar-divider: rgba(255, 255, 255, 0.08);
-  --notes-search-border: transparent;
-  --notes-prose-secondary: #aeaeb2;
-  --notes-blockquote-border: #48484a;
-  --notes-toggle-track: #39393d;
+  --notes-accent: #5eb0ff;
+  --notes-input-bg: rgba(0, 0, 0, 0.28);
+  --notes-toolbar-bg: rgba(255, 255, 255, 0.08);
+  --notes-toolbar-divider: rgba(255, 255, 255, 0.14);
+  --notes-search-border: rgba(255, 255, 255, 0.1);
+  --notes-prose-secondary: rgba(210, 218, 222, 0.78);
+  --notes-blockquote-border: rgba(255, 255, 255, 0.22);
+  --notes-toggle-track: rgba(255, 255, 255, 0.14);
   --notes-toggle-thumb: #f5f5f7;
   --notes-toggle-icon: #1c1c1e;
-  --notes-menu-bg: #2c2c2e;
+  --notes-menu-bg: rgba(30, 32, 36, 0.55);
   --notes-toast-bg: rgba(242, 242, 247, 0.92);
   --notes-toast-text: #1d1d1f;
-  --notes-shadow-ring: transparent;
-  --notes-shadow-sm: rgba(0, 0, 0, 0.3);
-  --notes-shadow-md: rgba(0, 0, 0, 0.45);
-  --notes-shadow-lg: rgba(0, 0, 0, 0.6);
   --notes-canvas-a: #0a0a0a;
   --notes-canvas-b: #12141a;
   --notes-canvas-c: #0a0a0a;
   --notes-scrim: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.35) 45%,
-    rgba(0, 0, 0, 0.45) 100%
+    rgba(0, 0, 0, 0.28) 0%,
+    rgba(0, 0, 0, 0.12) 50%,
+    rgba(0, 0, 0, 0.22) 100%
   );
 }
 
+/* —— Liquid glass shell (Figma fill + depth) —— */
+.projects-notes .liquid-glass,
+.projects-notes .notes-app.liquid-glass {
+  position: relative;
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-stroke);
+  box-shadow: var(--glass-shadow);
+  isolation: isolate;
+}
+
+/* Soft specular rim — liquid glass highlight */
+.projects-notes .notes-app.liquid-glass::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-highlight);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* Inner hairline for edge definition */
+.projects-notes .notes-app.liquid-glass::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  z-index: 1;
+}
+
+.projects-notes .notes-app.liquid-glass > * {
+  position: relative;
+  z-index: 2;
+}
+
 .projects-notes .notes-sidebar-bg {
-  background-color: var(--notes-sidebar);
+  background: linear-gradient(
+    180deg,
+    var(--glass-fill-soft) 0%,
+    transparent 100%
+  );
 }
 
 .projects-notes .notes-app-bg {
-  background-color: var(--notes-app-bg);
+  background: var(--glass-fill);
 }
 
 .projects-notes .notes-surface-bg {
-  background-color: var(--notes-surface);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    transparent 40%
+  );
+}
+
+html[data-theme="dark"] .projects-notes .notes-surface-bg {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 40%
+  );
 }
 
 .projects-notes .notes-text {
@@ -118,6 +208,8 @@ html[data-theme="dark"] .projects-notes {
   background-color: var(--notes-input-bg);
   border: 1px solid var(--notes-search-border);
   color: var(--notes-text);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .projects-notes .notes-search-input::placeholder {
@@ -125,8 +217,8 @@ html[data-theme="dark"] .projects-notes {
 }
 
 .projects-notes .notes-search-input:focus {
-  border-color: color-mix(in srgb, var(--notes-accent) 40%, transparent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--notes-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--notes-accent) 45%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--notes-accent) 16%, transparent);
   outline: none;
 }
 
@@ -141,6 +233,7 @@ html[data-theme="dark"] .projects-notes {
 .projects-notes .notes-list-item-active {
   background-color: var(--notes-selection);
   color: var(--notes-selection-text);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 
 .projects-notes .notes-list-item-active .notes-muted {
@@ -149,7 +242,11 @@ html[data-theme="dark"] .projects-notes {
 
 .projects-notes .notes-toolbar {
   background-color: var(--notes-toolbar-bg);
-  box-shadow: inset 0 0 0 1px var(--notes-divider);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow:
+    inset 0 0 0 1px var(--glass-stroke-soft),
+    0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .projects-notes .notes-toolbar-btn {
@@ -165,8 +262,11 @@ html[data-theme="dark"] .projects-notes {
 }
 
 .projects-notes .notes-chip {
-  background-color: var(--notes-hover);
+  background-color: var(--glass-fill-strong);
+  border: 1px solid var(--glass-stroke-soft);
   color: var(--notes-muted);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .projects-notes .theme-toggle {
@@ -174,6 +274,7 @@ html[data-theme="dark"] .projects-notes {
   transition:
     background-color 200ms ease-out,
     transform 150ms ease-out;
+  box-shadow: inset 0 0 0 1px var(--glass-stroke-soft);
 }
 
 .projects-notes .theme-toggle::before {
@@ -268,7 +369,8 @@ html[data-theme="dark"] .projects-notes {
 .projects-notes .prose-notes code {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.9em;
-  background: var(--notes-hover);
+  background: var(--glass-fill-strong);
+  border: 1px solid var(--glass-stroke-soft);
   padding: 0.12em 0.35em;
   border-radius: 0.35em;
 }
@@ -276,19 +378,25 @@ html[data-theme="dark"] .projects-notes {
 @media (max-width: 767px) {
   .projects-notes .notes-app {
     border-radius: 0;
-    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    /* Keep a lighter glass shadow on mobile */
+    box-shadow:
+      0 10px 10px rgba(0, 0, 0, 0.12),
+      0 3px 6px rgba(0, 0, 0, 0.16);
     margin: 0;
     max-width: none;
+  }
+
+  .projects-notes .notes-app.liquid-glass::before,
+  .projects-notes .notes-app.liquid-glass::after {
+    border-radius: 0;
   }
 }
 
 @media (min-width: 768px) {
   .projects-notes .notes-app {
-    box-shadow:
-      0 0 0 1px var(--notes-shadow-ring),
-      0 2px 4px var(--notes-shadow-sm),
-      0 8px 20px var(--notes-shadow-md),
-      0 24px 56px var(--notes-shadow-lg);
+    /* Figma liquid-glass depth already on .liquid-glass */
   }
 }
 
@@ -307,4 +415,21 @@ html[data-theme="dark"] .projects-notes {
 
 .projects-notes .notes-background-scrim {
   background: var(--notes-scrim);
+}
+
+/* Prefer reduced transparency when user requests less motion/transparency */
+@media (prefers-reduced-transparency: reduce) {
+  .projects-notes {
+    --glass-fill: rgba(255, 255, 255, 0.88);
+    --glass-blur: 0px;
+  }
+
+  html[data-theme="dark"] .projects-notes {
+    --glass-fill: rgba(28, 30, 32, 0.92);
+  }
+
+  .projects-notes .notes-app.liquid-glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }
