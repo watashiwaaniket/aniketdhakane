@@ -60,14 +60,9 @@ function FeaturedProjectCard({
       <div className="relative z-10 flex flex-col gap-2 p-4 md:p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <h2 className="font-semibold text-lg tracking-tight text-balance text-[var(--foreground)]">
-                {project.title}
-              </h2>
-              <span className="rounded-full bg-[var(--surface-muted)] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[var(--accent-sage)]">
-                Featured
-              </span>
-            </div>
+            <h2 className="font-semibold text-lg tracking-tight text-balance text-[var(--foreground)]">
+              {project.title}
+            </h2>
             <p className="mt-1 text-sm text-[var(--text-muted)] text-pretty line-clamp-2">
               {project.preview}
             </p>
@@ -105,7 +100,7 @@ export default function FeaturedProjects() {
   return (
     <section className="pb-8">
       <div className="flex items-baseline justify-between gap-3 pb-2">
-        <h1 className="text-md font-bold">Projects</h1>
+        <h1 className="text-md font-bold">Featured Projects</h1>
         <Link
           href="/projects"
           className="text-xs text-[var(--accent-blue)] hover:underline"
@@ -114,7 +109,7 @@ export default function FeaturedProjects() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 px-2 py-1.5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 px-2 py-1.5 sm:grid-cols-2 sm:gap-5">
         {projects.map((project, index) => (
           <FeaturedProjectCard
             key={project.slug}
