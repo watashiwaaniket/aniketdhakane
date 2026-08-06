@@ -4,6 +4,23 @@ import type { Project } from "./project-types";
 
 export const projects: Project[] = [
   {
+    "slug": "liftw",
+    "title": "Liftw",
+    "date": "2026-07-28",
+    "category": "Fullstack",
+    "status": "Live",
+    "featured": true,
+    "link": "https://liftw.xyz",
+    "stack": [
+      "Next.js",
+      "Postgres",
+      "Prisma",
+      "MCP"
+    ],
+    "preview": "Liftw is a private gym tracker: log workouts, track volume and PRs, and optionally connect AI coaches through MCP — with…",
+    "content": "**Liftw** is a private gym tracker: log workouts, track volume and PRs, and optionally connect AI coaches through MCP — without a social feed or locked-in chatbot.\n\nSite: [liftw.xyz](https://liftw.xyz)\n\n## Why it exists\n\nMost gym apps push social noise or hide your data behind a closed AI. Liftw is private-by-default: you own the log, and you choose when an agent gets a revocable API key.\n\n## What it does\n\n- Log sessions — exercises, sets, weight, reps, RPE, warmups\n- Session + rest timers; optional calorie estimates\n- Progress charts: volume, muscle balance, estimated 1RM, PRs\n- MCP-ready APIs so tools like Claude/Cursor can coach from your real history\n- Auth, onboarding, profile, and account controls\n\n## Stack notes\n\nNext.js + TypeScript on the web, Postgres/Prisma for the log, and an MCP surface for optional AI coaching. Built for people who actually train and want numbers they can trust."
+  },
+  {
     "slug": "lfm",
     "title": "lfm",
     "date": "2026-07-26",

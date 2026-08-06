@@ -6,6 +6,7 @@ import { FadeInSection } from "./components/FadeInSection";
 
 const LastFmWidget = dynamic(() => import("./components/LastFmWidget"));
 const GitHubStats = dynamic(() => import("./components/GitHubStats"));
+const FeaturedProjects = dynamic(() => import("./components/FeaturedProjects"));
 const Experience = dynamic(() => import("./components/Experience"));
 const SkillsAndCertifications = dynamic(
   () => import("./components/SkillsAndCertifications")
@@ -23,6 +24,10 @@ export default function Home() {
 
         <FadeInSection>
           <GitHubStats />
+        </FadeInSection>
+
+        <FadeInSection y={30} duration={0.7}>
+          <FeaturedProjects />
         </FadeInSection>
 
         <FadeInSection y={40} duration={0.8}>
