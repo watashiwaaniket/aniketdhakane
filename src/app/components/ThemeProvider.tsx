@@ -137,6 +137,33 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  // Press "T" to toggle theme (site-wide; ignore typing + modifier combos)
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      if (event.key !== "t" && event.key !== "T") return;
+
+      const target = event.target;
+      if (target instanceof HTMLElement) {
+        const tag = target.tagName;
+        if (
+          tag === "INPUT" ||
+          tag === "TEXTAREA" ||
+          tag === "SELECT" ||
+          target.isContentEditable
+        ) {
+          return;
+        }
+      }
+
+      event.preventDefault();
+      toggleTheme();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [toggleTheme]);
+
   const value = useMemo(
     () => ({ theme, mounted, setTheme, toggleTheme }),
     [theme, mounted, setTheme, toggleTheme]
