@@ -59,7 +59,7 @@ export function ThemeToggle() {
     if (!mounted) return;
 
     const showId = window.setTimeout(() => setShowTip(true), 700);
-    const hideId = window.setTimeout(() => dismissTip(), 6500);
+    const hideId = window.setTimeout(() => dismissTip(), 12500);
 
     return () => {
       window.clearTimeout(showId);
