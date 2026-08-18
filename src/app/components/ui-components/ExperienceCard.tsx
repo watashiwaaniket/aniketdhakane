@@ -3,6 +3,12 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { m, useReducedMotion } from "motion/react";
+import {
+  CardHoverFx,
+  cardHoverFxClassName,
+  cardHoverShadowClassName,
+  cardSpotHandlers,
+} from "./CardHoverFx";
 
 export interface ExperienceCardProps {
   title: string;
@@ -14,7 +20,7 @@ export interface ExperienceCardProps {
   visualSide?: "left" | "right";
 }
 
-const hoverTransition = { duration: 0.3 };
+const hoverTransition = { duration: 0.15, ease: "easeOut" as const };
 
 export default function ExperienceCard({
   title,
@@ -67,20 +73,9 @@ export default function ExperienceCard({
     </div>
   );
 
-  const sageGlow = (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[140%] opacity-25 transition-opacity duration-300 ease-out group-hover:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:opacity-25"
-      style={{
-        background:
-          "radial-gradient(ellipse 95% 90% at 50% 100%, color-mix(in srgb, var(--accent-sage) 58%, transparent) 0%, color-mix(in srgb, var(--accent-sage) 28%, transparent) 38%, color-mix(in srgb, var(--accent-sage) 10%, transparent) 62%, transparent 78%)",
-      }}
-    />
-  );
-
   const body: ReactNode = (
     <>
-      {sageGlow}
+      <CardHoverFx />
       <div className="relative z-10 flex flex-col md:flex-row gap-4 items-start">
         {isVisualRight ? (
           <>
@@ -97,21 +92,21 @@ export default function ExperienceCard({
     </>
   );
 
-  // Match Socials: Motion whileHover/whileTap instead of CSS scale transitions
-  const motionProps = prefersReducedMotion
-    ? {}
-    : {
-        whileHover: { scale: 1.02 },
-        whileTap: isClickable
-          ? { scale: 0.98, transition: { duration: 0.1 } }
-          : undefined,
-        transition: hoverTransition,
-      };
+  const motionProps = {
+    ...cardSpotHandlers(!prefersReducedMotion),
+    ...(prefersReducedMotion
+      ? {}
+      : {
+          whileTap: isClickable ? { scale: 0.96 } : undefined,
+          transition: hoverTransition,
+        }),
+  };
 
   const className = [
     "group relative block origin-center overflow-hidden rounded-xl border-1 border-[var(--border)] bg-[var(--card)]",
+    cardHoverFxClassName,
     isClickable
-      ? "cursor-pointer transition-[border-color,box-shadow] duration-300 ease-out hover:border-[color-mix(in_srgb,var(--accent-sage)_45%,var(--border))] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_color-mix(in_srgb,var(--accent-sage)_18%,transparent)]"
+      ? `cursor-pointer ${cardHoverShadowClassName}`
       : "cursor-default",
   ]
     .filter(Boolean)

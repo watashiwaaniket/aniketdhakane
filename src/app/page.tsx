@@ -26,7 +26,7 @@ export default function Home() {
           <GitHubStats />
         </FadeInSection>
 
-        <FadeInSection y={30} duration={0.7}>
+        <FadeInSection y={0} duration={0.25}>
           <FeaturedProjects />
         </FadeInSection>
 

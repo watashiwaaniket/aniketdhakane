@@ -2,6 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { m, useReducedMotion } from "motion/react";
+import {
+  CardHoverFx,
+  cardHoverFxClassName,
+  cardHoverShadowClassName,
+  cardSpotHandlers,
+} from "./ui-components/CardHoverFx";
 
 const LASTFM_USER = "hisukurifu";
 const LASTFM_PROFILE = `https://www.last.fm/user/${LASTFM_USER}`;
@@ -267,16 +273,13 @@ export default function LastFmWidget() {
           href={track.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 flex origin-center items-center gap-3 rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 transition-[background-color,border-color,box-shadow] duration-300 ease-out hover:bg-[var(--surface-hover)] hover:border-[color-mix(in_srgb,var(--accent-sage)_45%,var(--border))] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_color-mix(in_srgb,var(--accent-sage)_12%,transparent)]"
-          {...(prefersReducedMotion
-            ? {}
-            : {
-                whileHover: { scale: 1.02 },
-                whileTap: { scale: 0.98, transition: { duration: 0.1 } },
-                transition: { duration: 0.3 },
-              })}
+          className={`group relative mt-2 flex origin-center items-center gap-3 overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] p-3 ${cardHoverShadowClassName} ${cardHoverFxClassName}`}
+          {...cardSpotHandlers(!prefersReducedMotion)}
+          whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
         >
-          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-muted)]">
+          <CardHoverFx />
+          <div className="relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface-muted)]">
             {track.image ? (
               // eslint-disable-next-line @next/next/no-img-element -- remote Last.fm art on static export
               <img
@@ -295,7 +298,7 @@ export default function LastFmWidget() {
             )}
           </div>
 
-          <div className="min-w-0 flex-1">
+          <div className="relative z-10 min-w-0 flex-1">
             <div className="flex items-center gap-2">
               {track.nowPlaying ? (
                 <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wide text-[var(--accent-sage)]">

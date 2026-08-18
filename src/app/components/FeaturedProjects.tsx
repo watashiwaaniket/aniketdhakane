@@ -4,11 +4,17 @@ import Link from "next/link";
 import { m, useReducedMotion } from "motion/react";
 import { getProjectBySlug } from "@/lib/projects/projects";
 import type { Project } from "@/lib/projects/project-types";
+import {
+  CardHoverFx,
+  cardHoverFxClassName,
+  cardHoverShadowClassName,
+  cardSpotHandlers,
+} from "./ui-components/CardHoverFx";
 
 /** Home page only — explicit order, not the full projects catalog. */
 const FEATURED_SLUGS = ["lfm", "liftw"] as const;
 
-const hoverTransition = { duration: 0.3 };
+const hoverTransition = { duration: 0.15, ease: "easeOut" as const };
 
 function FeaturedProjectCard({
   project,
@@ -24,12 +30,12 @@ function FeaturedProjectCard({
   return (
     <m.div
       className="h-full min-w-0"
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
       whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.55,
-        delay: index * 0.08,
+        duration: 0.4,
+        delay: index * 0.1,
         ease: [0.21, 0.92, 0.25, 1],
       }}
     >
@@ -38,24 +44,13 @@ function FeaturedProjectCard({
       {...(isExternal
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
-      className="group relative flex h-full min-w-0 flex-col origin-center cursor-pointer overflow-hidden rounded-xl border-1 border-[var(--border)] bg-[var(--card)] transition-[border-color,box-shadow] duration-300 ease-out hover:border-[color-mix(in_srgb,var(--accent-sage)_45%,var(--border))] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_color-mix(in_srgb,var(--accent-sage)_18%,transparent)]"
+      className={`group relative flex h-full min-w-0 flex-col origin-center cursor-pointer overflow-hidden rounded-xl border-1 border-[var(--border)] bg-[var(--card)] ${cardHoverShadowClassName} ${cardHoverFxClassName}`}
       aria-label={`Open ${project.title}`}
-      whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-      whileTap={
-        prefersReducedMotion
-          ? undefined
-          : { scale: 0.98, transition: { duration: 0.1 } }
-      }
+      {...cardSpotHandlers(!prefersReducedMotion)}
+      whileTap={prefersReducedMotion ? undefined : { scale: 0.96 }}
       transition={hoverTransition}
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[140%] opacity-25 transition-opacity duration-300 ease-out group-hover:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:opacity-25"
-        style={{
-          background:
-            "radial-gradient(ellipse 95% 90% at 50% 100%, color-mix(in srgb, var(--accent-sage) 58%, transparent) 0%, color-mix(in srgb, var(--accent-sage) 28%, transparent) 38%, color-mix(in srgb, var(--accent-sage) 10%, transparent) 62%, transparent 78%)",
-        }}
-      />
+      <CardHoverFx />
 
       <div className="relative z-10 flex flex-col gap-2 p-4 md:p-5">
         <div className="flex items-start justify-between gap-3">
