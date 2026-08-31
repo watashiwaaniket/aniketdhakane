@@ -16,9 +16,11 @@ import {
 } from "./icons/SkillsIcons";
 import { m, useReducedMotion } from "motion/react";
 import CertificationCard from "./ui-components/CertificationCard";
+import { useTheme } from "./ThemeProvider";
 
 export default function SkillsAndCertifications() {
   const prefersReducedMotion = useReducedMotion();
+  const { theme } = useTheme();
   const icons = [
     ReactIcon,
     NextIcon,
@@ -56,7 +58,7 @@ export default function SkillsAndCertifications() {
             transition={{ duration: 0.3 }}
             className="origin-center overflow-visible"
           >
-            <Icon />
+            <Icon theme={theme} />
           </m.div>
         ))}
       </div>

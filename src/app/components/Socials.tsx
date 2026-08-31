@@ -5,8 +5,11 @@ import { XIcon } from "./icons/XIcon";
 import { LinIcon } from "./icons/LinIcon";
 import { MailIcon } from "./icons/MailIcon";
 import { m } from "motion/react";
+import { useTheme } from "./ThemeProvider";
 
 export function Socials() {
+  const { theme } = useTheme();
+
   return (
     <div className="my-4">
       <h1 className="text-md font-bold">Socials</h1>
@@ -19,7 +22,7 @@ export function Socials() {
             whileTap={{ scale: 0.8, transition: { duration: 0.1 } }}
             transition={{ duration: 0.3 }}
           >
-            <XIcon />
+            <XIcon theme={theme} />
           </m.div>
         </Link>
         <Link href={"https://github.com/watashiwaaniket"}>
@@ -30,7 +33,7 @@ export function Socials() {
             whileTap={{ scale: 0.8, transition: { duration: 0.1 } }}
             transition={{ duration: 0.3 }}
           >
-            <GithubIcon />
+            <GithubIcon theme={theme} />
           </m.div>
         </Link>
         <Link href={"https://www.linkedin.com/in/aniket-dhakane-9b06a125b/"}>
@@ -41,7 +44,7 @@ export function Socials() {
             whileTap={{ scale: 0.8, transition: { duration: 0.1 } }}
             transition={{ duration: 0.3 }}
           >
-            <LinIcon />
+            <LinIcon theme={theme} />
           </m.div>
         </Link>
         <Link href={"mailto:aniketdhakane3@gmail.com"}>
@@ -52,7 +55,7 @@ export function Socials() {
             whileTap={{ scale: 0.8, transition: { duration: 0.1 } }}
             transition={{ duration: 0.3 }}
           >
-            <MailIcon />
+            <MailIcon theme={theme} />
           </m.div>
         </Link>
       </div>
