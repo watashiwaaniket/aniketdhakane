@@ -1,6 +1,6 @@
 import type { Project, ProjectGroup } from "./project-types";
 
-const CATEGORY_ORDER = ["Fullstack", "Frontend", "Misc", "Other"];
+export const PROJECT_CATEGORY_ORDER = ["Fullstack", "Frontend", "Misc", "Other"];
 
 export function buildPreview(content: string): string {
   const plain = content
@@ -32,7 +32,7 @@ export function groupProjectsByCategory(projects: Project[]): ProjectGroup[] {
     byCategory.set(label, existing);
   }
 
-  for (const label of CATEGORY_ORDER) {
+  for (const label of PROJECT_CATEGORY_ORDER) {
     const items = byCategory.get(label);
     if (items?.length) {
       ordered.push({ label, projects: items });
@@ -45,6 +45,44 @@ export function groupProjectsByCategory(projects: Project[]): ProjectGroup[] {
   }
 
   return ordered;
+}
+
+/** Sidebar order: each project once, under its category. */
+export function groupProjectsForNav(projects: Project[]): ProjectGroup[] {
+  const byCategory = new Map<string, Project[]>();
+
+  for (const project of projects) {
+    const label = project.category || "Other";
+    const existing = byCategory.get(label) ?? [];
+    existing.push(project);
+    byCategory.set(label, existing);
+  }
+
+  const ordered: ProjectGroup[] = [];
+
+  for (const label of PROJECT_CATEGORY_ORDER) {
+    const items = byCategory.get(label);
+    if (items?.length) {
+      ordered.push({ label, projects: items });
+      byCategory.delete(label);
+    }
+  }
+
+  for (const [label, items] of byCategory) {
+    ordered.push({ label, projects: items });
+  }
+
+  return ordered;
+}
+
+export function getAdjacentProjects(projects: Project[], slug: string) {
+  const ordered = groupProjectsForNav(projects).flatMap((group) => group.projects);
+  const index = ordered.findIndex((project) => project.slug === slug);
+
+  return {
+    previous: index > 0 ? ordered[index - 1] : undefined,
+    next: index >= 0 && index < ordered.length - 1 ? ordered[index + 1] : undefined,
+  };
 }
 
 export function formatProjectDate(

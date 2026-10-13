@@ -1,4 +1,6 @@
+import { getAllProjects } from "@/lib/projects/projects";
+import { DocsOverview } from "./_components/docs-overview";
+
 export default function ProjectsPage() {
-  // Shell renders the empty detail state on desktop; list on mobile.
-  return null;
+  return <DocsOverview projects={getAllProjects()} />;
 }

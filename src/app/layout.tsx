@@ -60,9 +60,11 @@ export default function RootLayout({
       <body
         className={`${geistMono.variable} ${rubik.variable} antialiased`}
       >
-        <ThemeProvider>
-          <MotionProvider>{children}</MotionProvider>
-        </ThemeProvider>
+        <div className="isolate">
+          <ThemeProvider>
+            <MotionProvider>{children}</MotionProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </html>
   );

@@ -33,5 +33,5 @@ export default async function ProjectPage({
     notFound();
   }
 
-  return <ProjectDetail project={project} showBackButton />;
+  return <ProjectDetail project={project} />;
 }
