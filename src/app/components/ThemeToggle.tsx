@@ -43,6 +43,23 @@ function MoonIcon() {
 
 const iconTransition = { type: "spring" as const, duration: 0.3, bounce: 0 };
 const tipSpring = { type: "spring" as const, duration: 0.45, bounce: 0.25 };
+const THEME_TIP_SEEN_KEY = "theme-tip-seen";
+
+function hasSeenThemeTip() {
+  try {
+    return localStorage.getItem(THEME_TIP_SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markThemeTipSeen() {
+  try {
+    localStorage.setItem(THEME_TIP_SEEN_KEY, "1");
+  } catch {
+    // Private mode and blocked storage should not break the toggle.
+  }
+}
 
 export function ThemeToggle() {
   const { theme, mounted, toggleTheme } = useTheme();
@@ -54,11 +71,14 @@ export function ThemeToggle() {
     setShowTip(false);
   }, []);
 
-  // Every load: teach "press T" after a short settle delay
+  // First landing only. Later mounts (in-site navigation) stay quiet.
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || hasSeenThemeTip()) return;
 
-    const showId = window.setTimeout(() => setShowTip(true), 700);
+    const showId = window.setTimeout(() => {
+      markThemeTipSeen();
+      setShowTip(true);
+    }, 700);
     const hideId = window.setTimeout(() => dismissTip(), 12500);
 
     return () => {

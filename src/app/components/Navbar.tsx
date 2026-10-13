@@ -16,7 +16,7 @@ type NavItem = {
 const navItems: NavItem[] = [
   { href: "/wall", label: "wall" },
   { href: "/projects", label: "projects" },
-  { href: "https://blogs.aniketdhakane.xyz", label: "blog", external: false },
+  { href: "/blog", label: "blog" },
   { href: "/aniketdhakane.pdf", label: "resume", accent: true },
 ];
 

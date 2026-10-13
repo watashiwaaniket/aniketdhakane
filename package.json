@@ -15,6 +15,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
     "@paper-design/shaders-react": "^0.0.68",
     "gray-matter": "^4.0.3",
     "motion": "^12.23.9",
