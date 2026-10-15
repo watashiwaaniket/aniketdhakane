@@ -8,7 +8,7 @@ export function Hero() {
       <h1 className="text-2xl md:text-3xl font-semibold">Aniket Dhakane 𓅓</h1>
       <div className="space-x-1 text-sm">
         <ShinyText
-          text="👨🏻‍💻 Jr Software Engineer"
+          text="👨🏻‍💻 Software Engineer"
           disabled={false}
           speed={3}
           className="custom-class"
