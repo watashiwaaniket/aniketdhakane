@@ -3,8 +3,8 @@
 import { m, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
-const ASK_PROMPT = "Why might Aniket Dhakane (aniketdhakane.xyz) matter?";
-const encodedPrompt = encodeURIComponent(ASK_PROMPT);
+const DEFAULT_PROMPT = "Why might Aniket Dhakane (aniketdhakane.xyz) matter?";
+const DEFAULT_LABEL = "Ask why Aniket might matter on any platform";
 
 type Platform = {
   name: string;
@@ -12,33 +12,36 @@ type Platform = {
   icon: ReactNode;
 };
 
-const platforms: Platform[] = [
-  {
-    name: "ChatGPT",
-    href: `https://chatgpt.com/?q=${encodedPrompt}`,
-    icon: <ChatGPTIcon />,
-  },
-  {
-    name: "Claude",
-    href: `https://claude.ai/new?q=${encodedPrompt}`,
-    icon: <ClaudeIcon />,
-  },
-  {
-    name: "Grok",
-    href: `https://grok.com/?q=${encodedPrompt}`,
-    icon: <GrokIcon />,
-  },
-  {
-    name: "Perplexity",
-    href: `https://www.perplexity.ai/search?q=${encodedPrompt}`,
-    icon: <PerplexityIcon />,
-  },
-  {
-    name: "Gemini",
-    href: `https://gemini.google.com/app?q=${encodedPrompt}`,
-    icon: <GeminiIcon />,
-  },
-];
+function platformsFor(prompt: string): Platform[] {
+  const encodedPrompt = encodeURIComponent(prompt);
+  return [
+    {
+      name: "ChatGPT",
+      href: `https://chatgpt.com/?q=${encodedPrompt}`,
+      icon: <ChatGPTIcon />,
+    },
+    {
+      name: "Claude",
+      href: `https://claude.ai/new?q=${encodedPrompt}`,
+      icon: <ClaudeIcon />,
+    },
+    {
+      name: "Grok",
+      href: `https://grok.com/?q=${encodedPrompt}`,
+      icon: <GrokIcon />,
+    },
+    {
+      name: "Perplexity",
+      href: `https://www.perplexity.ai/search?q=${encodedPrompt}`,
+      icon: <PerplexityIcon />,
+    },
+    {
+      name: "Gemini",
+      href: `https://gemini.google.com/app?q=${encodedPrompt}`,
+      icon: <GeminiIcon />,
+    },
+  ];
+}
 
 const iconClass = "h-[18px] w-[18px]";
 
@@ -130,15 +133,22 @@ function GeminiIcon() {
   );
 }
 
-export default function AskAI() {
+export default function AskAI({
+  label = DEFAULT_LABEL,
+  prompt = DEFAULT_PROMPT,
+  className = "my-6",
+}: {
+  label?: string;
+  prompt?: string;
+  className?: string;
+}) {
   const prefersReducedMotion = useReducedMotion();
+  const platforms = platformsFor(prompt);
 
   return (
-    <div className="my-6">
+    <div className={className}>
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-        <p className="text-sm text-[var(--text-muted)] text-pretty">
-          Ask why Aniket might matter on any platform
-        </p>
+        <p className="text-sm text-[var(--text-muted)] text-pretty">{label}</p>
 
         <div className="flex shrink-0 items-center gap-2 overflow-visible px-1 py-1">
           {platforms.map((platform) => (
@@ -147,7 +157,7 @@ export default function AskAI() {
               href={platform.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Ask ${platform.name}: ${ASK_PROMPT}`}
+              aria-label={`Ask ${platform.name}: ${prompt}`}
               title={`Ask ${platform.name}`}
               className="inline-flex size-10 origin-center items-center justify-center rounded-xl bg-white text-[#1f2a2f] shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.05)] transition-[box-shadow] duration-150 ease-out hover:shadow-[0_0_0_1px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
               whileHover={prefersReducedMotion ? undefined : { scale: 1.12 }}

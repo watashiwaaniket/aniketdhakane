@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
-import type { Article } from "@/lib/blog/articles";
+import type { ArticleMeta } from "@/lib/blog/articles";
 
 type BlogNavProps = {
-  articles: Article[];
+  articles: ArticleMeta[];
 };
 
 export function BlogNav({ articles }: BlogNavProps) {
@@ -17,7 +17,9 @@ export function BlogNav({ articles }: BlogNavProps) {
   const visible = useMemo(() => {
     if (!normalized) return articles;
     return articles.filter((article) =>
-      `${article.title} ${article.preview}`.toLowerCase().includes(normalized),
+      `${article.title} ${article.nav} ${article.preview}`
+        .toLowerCase()
+        .includes(normalized),
     );
   }, [articles, normalized]);
 
@@ -84,13 +86,13 @@ export function BlogNav({ articles }: BlogNavProps) {
                     <Link
                       href={href}
                       aria-current={active ? "page" : undefined}
-                      className={`flex min-h-10 items-center rounded-lg px-2.5 text-sm transition-[background-color,color] duration-150 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-[var(--docs-accent)] ${
+                      className={`flex min-h-10 items-center rounded-lg px-2.5 py-2 text-sm leading-snug transition-[background-color,color] duration-150 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-[var(--docs-accent)] ${
                         active
                           ? "bg-[var(--docs-active)] font-medium text-[var(--docs-text)]"
                           : "text-[var(--docs-muted)] hover:bg-[var(--docs-hover)] hover:text-[var(--docs-text)]"
                       }`}
                     >
-                      {article.title}
+                      {article.nav}
                     </Link>
                   </li>
                 );

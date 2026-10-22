@@ -1,7 +1,67 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown, { type Components } from "react-markdown";
+import AskAI from "@/app/components/AskAI";
 import { articles, type Article } from "@/lib/blog/articles";
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function formatArticleDate(date: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!match) return date;
+  const month = MONTHS[Number(match[2]) - 1];
+  if (!month) return date;
+  return `${month} ${Number(match[3])}, ${match[1]}`;
+}
+
+const markdown: Components = {
+  a: ({ href, children }) => {
+    const external = Boolean(href && /^https?:\/\//.test(href));
+    return (
+      <a
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        {children}
+      </a>
+    );
+  },
+  // Markdown wraps a lone image in <p>. A figure cannot live there.
+  p: ({ children, node }) => {
+    const kids = (
+      node as { children?: Array<{ type?: string; tagName?: string }> } | undefined
+    )?.children;
+    const onlyImage =
+      kids?.length === 1 &&
+      kids[0]?.type === "element" &&
+      kids[0]?.tagName === "img";
+    if (onlyImage) return <>{children}</>;
+    return <p>{children}</p>;
+  },
+  img: ({ src, alt }) => {
+    if (typeof src !== "string" || !src) return null;
+    return (
+      <figure>
+        <img src={src} alt={alt ?? ""} />
+        {alt ? <figcaption>{alt}</figcaption> : null}
+      </figure>
+    );
+  },
+};
 
 export function generateStaticParams() {
   return [
@@ -96,6 +156,12 @@ function BlogIndex() {
               <h2 className="text-base font-medium text-balance">
                 {article.title}
               </h2>
+              <time
+                dateTime={article.date}
+                className="mt-2 block text-xs text-[var(--docs-muted)] tabular-nums"
+              >
+                {formatArticleDate(article.date)}
+              </time>
               <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-[var(--docs-muted)] text-pretty">
                 {article.preview}
               </p>
@@ -114,17 +180,32 @@ function ArticleView({ article }: { article: Article }) {
       <h1 className="mt-2 text-4xl font-semibold tracking-tight text-balance">
         {article.title}
       </h1>
-      {article.date ? (
-        <time
-          dateTime={article.date}
-          className="mt-3 block text-sm text-[var(--docs-muted)] tabular-nums"
-        >
-          {article.date}
+      <p className="mt-3 text-sm text-[var(--docs-muted)]">
+        <time dateTime={article.date} className="tabular-nums">
+          {formatArticleDate(article.date)}
         </time>
-      ) : null}
-      <p className="mt-6 text-lg leading-relaxed text-[var(--docs-text)] text-pretty">
-        {article.preview}
+        {article.author ? (
+          <>
+            <span aria-hidden> · </span>
+            <span>{article.author}</span>
+          </>
+        ) : null}
       </p>
+      <div className="docs-prose mt-8 border-t border-[var(--docs-border)] pt-8">
+        <ReactMarkdown components={markdown}>{article.content}</ReactMarkdown>
+      </div>
+      {article.askPrompt ? (
+        <div className="mt-12 border-t border-[var(--docs-border)] pt-8">
+          <AskAI
+            label={
+              article.askLabel ??
+              "Want to dive much deeper? Ask your favorite AI."
+            }
+            prompt={article.askPrompt}
+            className="my-0"
+          />
+        </div>
+      ) : null}
     </article>
   );
 }

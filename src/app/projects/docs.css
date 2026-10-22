@@ -43,6 +43,7 @@ html[data-theme="dark"] .projects-docs {
 
 .projects-docs .docs-prose h2 {
   margin-top: 2em;
+  scroll-margin-top: 5rem;
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -113,4 +114,24 @@ html[data-theme="dark"] .projects-docs {
   background: transparent;
   padding: 0;
   font-size: inherit;
+}
+
+.projects-docs .docs-prose figure {
+  margin: 1.75rem 0;
+}
+
+.projects-docs .docs-prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--docs-border);
+  border-radius: 0.75rem;
+  background: #fffdf8;
+}
+
+.projects-docs .docs-prose figcaption {
+  margin-top: 0.55rem;
+  color: var(--docs-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
 }

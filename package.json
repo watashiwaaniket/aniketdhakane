@@ -7,8 +7,9 @@
   },
   "scripts": {
     "generate:projects": "node scripts/generate-projects.mjs",
-    "predev": "npm run generate:projects",
-    "prebuild": "npm run generate:projects",
+    "generate:blog": "node scripts/generate-blog.mjs",
+    "predev": "npm run generate:projects && npm run generate:blog",
+    "prebuild": "npm run generate:projects && npm run generate:blog",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
