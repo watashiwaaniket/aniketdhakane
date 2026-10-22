@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { socialMeta } from "@/lib/seo";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Socials } from "./components/Socials";
@@ -13,6 +15,15 @@ const SkillsAndCertifications = dynamic(
 );
 const AskAI = dynamic(() => import("./components/AskAI"));
 const Footer2 = dynamic(() => import("./components/Footer2"));
+
+export const metadata: Metadata = socialMeta({
+  title: "Aniket Dhakane",
+  description:
+    "Fullstack developer in Pune. Interfaces, and the systems behind them.",
+  path: "/",
+  image: "home",
+  alt: "Aniket Dhakane, fullstack developer in Pune",
+});
 
 export default function Home() {
   return (

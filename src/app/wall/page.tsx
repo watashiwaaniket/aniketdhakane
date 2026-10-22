@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { socialMeta } from "@/lib/seo";
+
+export const metadata: Metadata = socialMeta({
+  title: "Wall — Aniket Dhakane",
+  description: "A quieter place for shorter notes. Not open yet.",
+  path: "/wall",
+  image: "wall",
+  alt: "Wall, coming soon",
+});
 
 export default function page() {
   return (

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown, { type Components } from "react-markdown";
 import AskAI from "@/app/components/AskAI";
 import { articles, type Article } from "@/lib/blog/articles";
+import { socialMeta } from "@/lib/seo";
 
 const MONTHS = [
   "January",
@@ -78,16 +79,22 @@ export async function generateMetadata({
   const article = await findArticle(params);
 
   if (!article) {
-    return {
+    return socialMeta({
       title: "Blog — Aniket Dhakane",
       description: "Articles, notes, and things learned along the way.",
-    };
+      path: "/blog",
+      image: "blog",
+      alt: "Blog by Aniket Dhakane",
+    });
   }
 
-  return {
+  return socialMeta({
     title: `${article.title} — Blog`,
     description: article.preview,
-  };
+    path: `/blog/${article.slug}`,
+    image: `blog/${article.slug}`,
+    alt: article.title,
+  });
 }
 
 async function findArticle(

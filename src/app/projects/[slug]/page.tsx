@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects/projects";
+import { socialMeta } from "@/lib/seo";
 import { ProjectDetail } from "../_components/project-detail";
 
 export function generateStaticParams() {
@@ -15,10 +16,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
 
-  return {
-    title: project ? `${project.title} — Projects` : "Project — Aniket Dhakane",
-    description: project?.preview,
-  };
+  if (!project) {
+    return socialMeta({
+      title: "Project — Aniket Dhakane",
+      description:
+        "Write-ups for what I shipped: why it exists, the stack underneath, and what I would do differently.",
+      path: "/projects",
+      image: "projects",
+    });
+  }
+
+  return socialMeta({
+    title: `${project.title} — Projects`,
+    description: project.preview,
+    path: `/projects/${project.slug}`,
+    image: `projects/${project.slug}`,
+    alt: project.title,
+  });
 }
 
 export default async function ProjectPage({
