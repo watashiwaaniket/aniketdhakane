@@ -1,0 +1,122 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\else
+  \usepackage{fontspec}
+  \setmainfont{lmroman10-regular.otf}[
+    BoldFont = lmroman10-bold.otf,
+    ItalicFont = lmroman10-italic.otf,
+    BoldItalicFont = lmroman10-bolditalic.otf,
+    Ligatures = {TeX, NoCommon}
+  ]
+\fi
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1pt, topsep=1.5pt, parsep=0pt, partopsep=0pt}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=2em
+
+\newcommand{\rsection}[1]{%
+  \vspace{6pt}%
+  {\bfseries #1}\par
+  \vspace{1pt}%
+  \hrule height 0.4pt
+  \vspace{3pt}%
+}
+
+% Dates sit in the sentence, not in a right-hand column, so parsers read them in order.
+\newcommand{\role}[4]{%
+  \textbf{#1}, #3\par
+  #2, #4\par
+  \vspace{2pt}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Aniket Dhakane}\\[3pt]
+  Pune, India \ |\ +91 9405699036 \ |\ \href{mailto:aniketdhakane3@gmail.com}{aniketdhakane3@gmail.com}\\[2pt]
+  \href{https://www.aniketdhakane.xyz}{aniketdhakane.xyz}
+  \ |\ \href{https://www.linkedin.com/in/aniket-dhakane-9b06a125b/}{linkedin.com/in/aniket-dhakane-9b06a125b}
+  \ |\ \href{https://github.com/watashiwaaniket}{github.com/watashiwaaniket}
+\end{center}
+
+\vspace{2pt}
+\noindent Software engineer building production React and TypeScript interfaces, plus agent tooling (MCP, Claude). Shipping healthcare operations UI at Zensar, and a live gym product with an MCP API.
+
+\rsection{Experience}
+
+\textbf{Software Engineer}, Zensar Technologies\par
+Oct 2026 -- Present, Pune, India\par
+Junior Software Engineer, Oct 2025 -- Sep 2026
+\vspace{2pt}
+\begin{itemize}
+  \item Ship React and TypeScript features in an Nx micro-frontend monorepo for enterprise task lifecycle: create, edit, reassign, cancel, and close, with shared validation and table patterns.
+  \item Delivered clinical observation and nursing-request UI (Form.io): shift administration, patient details on logs, attendant and manager views, and screens matched to Figma on desktop, iPhone, and iPad.
+  \item Closed 37 of 44 assigned user stories and resolved 57 UI defects in Azure DevOps through Sep 2026 (filters, time zones, device layout) on an Agile release cadence.
+  \item Added a semibold type style to the shared design system, and built a Figma design-system sync agent for an internal AI summit.
+\end{itemize}
+
+\vspace{4pt}
+\role{Mobile App Developer, Freelance}{Feb 2025 -- Jun 2025}{Myotrek}{Pune, India}
+\begin{itemize}
+  \item Set up Firebase Authentication and Firestore sync for a React Native (Expo) home-gym app so login and workout data stay available across devices.
+  \item Owned Expo EAS builds and release. The app is live on the Apple App Store.
+\end{itemize}
+
+\vspace{4pt}
+\role{Software Developer Intern}{Feb 2024 -- Apr 2024}{XpedioLive Technologies Pvt.\ Ltd.}{Pune, India}
+\begin{itemize}
+  \item Built customer-facing pages and REST API integrations with Node.js and SvelteKit, aligned to product workflow and customer needs.
+  \item Implemented Axios client and server data flows, and wrote test cases around request and response paths.
+\end{itemize}
+
+\rsection{Projects}
+
+\textbf{Liftw}, 2025 -- Present, \href{https://liftw.xyz}{liftw.xyz}\par
+\textit{Next.js, TypeScript, Prisma, PostgreSQL, MCP, Cloudflare Workers}
+\begin{itemize}
+  \item Shipped a production gym tracker (auth, workout logs, progress analytics, exercise knowledge base) on Next.js, Prisma, and Postgres (Vercel and Neon).
+  \item Built an MCP server on Cloudflare Workers (training summary, coach brief, list and publish insights) with API-key auth, so agents coach from live training history instead of a demo chat UI.
+\end{itemize}
+
+\vspace{3pt}
+\textbf{PersonAI}, Apr 2025 -- Jul 2025\par
+\textit{Express, TypeScript, MongoDB, Gemini API, JWT, React}
+\begin{itemize}
+  \item Built a second-brain app for articles, videos, and notes, with JWT-secured REST APIs and per-user data isolation.
+  \item Used Gemini (gemini-2.5-flash) to write a short summary when content is saved.
+\end{itemize}
+
+\rsection{Skills}
+
+\textbf{GenAI / LLM:} Prompt engineering, tool use, MCP, agent workflows, offline inference (llama.cpp, Ollama), Claude, Gemini API, OpenAI API\\
+\textbf{RAG and agents:} LangChain, LangGraph, vector embeddings, Qdrant, semantic retrieval, Mem0\\
+\textbf{Languages:} TypeScript, JavaScript, Python, Go, SQL, HTML, CSS\\
+\textbf{Frontend:} React, Next.js, React Native, Expo, Tailwind CSS, shadcn/ui, SvelteKit, Figma\\
+\textbf{Backend:} Node.js, Express, FastAPI, REST, JWT, Zod, Firebase Authentication, Firestore, Axios\\
+\textbf{Data and infra:} PostgreSQL, Prisma, MongoDB, Docker, Nx, Cloudflare Workers, Vercel, Neon, Azure DevOps, Git
+
+\rsection{Education}
+
+\textbf{AISSMS College of Engineering}, Pune, India\par
+B.E.\ Computer Engineering, 2021 -- 2025, aggregate 75.55\%
+
+\rsection{Certification}
+
+\textbf{Claude Certified Architect -- Foundations (CCA-F)}, Anthropic, Jun 2026 -- Dec 2026\par
+Credential \href{https://verify.skilljar.com/c/h5phb8iwbwrw}{h5phb8iwbwrw}
+
+\end{document}

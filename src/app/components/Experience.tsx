@@ -21,7 +21,7 @@ export default function Experience() {
         >
           <ExperienceCard
             title="Zensar Technologies"
-            role="Jr Software Engineer"
+            role="Software Engineer"
             timeFrom="Oct 2025"
             timeTo="Present"
             visualSide="right"
